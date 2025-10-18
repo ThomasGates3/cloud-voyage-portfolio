@@ -56,37 +56,43 @@ const Index = () => {
     label: "Cybersecurity",
     description: "Security & Compliance",
     proficiency: 82,
-    maxProficiency: 100
+    maxProficiency: 100,
+    grade: "B+"
   }, {
     icon: Cloud,
     label: "Cloud Concepts",
     description: "AWS Solutions Architecture",
     proficiency: 87,
-    maxProficiency: 100
+    maxProficiency: 100,
+    grade: "A-"
   }, {
     icon: Network,
     label: "Full Stack Development",
     description: "Frontend & Backend Engineering",
     proficiency: 64,
-    maxProficiency: 100
+    maxProficiency: 100,
+    grade: "B-"
   }, {
     icon: Zap,
     label: "Generative AI",
     description: "AI/ML & Neural Networks",
     proficiency: 93,
-    maxProficiency: 100
+    maxProficiency: 100,
+    grade: "A"
   }, {
     icon: Headphones,
     label: "Customer Service",
     description: "Client Success & Support",
     proficiency: 98,
-    maxProficiency: 100
+    maxProficiency: 100,
+    grade: "A+"
   }, {
     icon: Users,
     label: "Collaboration",
     description: "Team Leadership",
     proficiency: 88,
-    maxProficiency: 100
+    maxProficiency: 100,
+    grade: "B"
   }];
 
   const experience = [
@@ -252,6 +258,7 @@ const Index = () => {
                     proficiency={skill.proficiency}
                     maxProficiency={skill.maxProficiency}
                     label=""
+                    grade={skill.grade}
                   />
                 </div>
               </div>
@@ -335,7 +342,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-border relative z-10">
         <div className="container mx-auto max-w-6xl text-center text-muted-foreground">
-          <p>© 2025 Thomas Gates III – Built with AWS & Lovable</p>
+          <p>© 2025 Thomas Gates III</p>
         </div>
       </footer>
     </div>;

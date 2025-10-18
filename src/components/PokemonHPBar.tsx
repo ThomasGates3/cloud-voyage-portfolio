@@ -4,9 +4,10 @@ interface PokemonHPBarProps {
   proficiency: number;
   maxProficiency: number;
   label: string;
+  grade?: string;
 }
 
-const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency, label }) => {
+const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency, label, grade }) => {
   const percentage = (proficiency / maxProficiency) * 100;
 
   // Determine color based on HP percentage
@@ -59,9 +60,7 @@ const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency
 
       <div className="flex items-center justify-between mb-2">
         <span className="font-heading font-bold text-lg text-foreground">{label}</span>
-        <span className="font-mono text-sm font-bold text-accent">
-          {proficiency}/{maxProficiency} HP
-        </span>
+        {grade && <span className="font-mono text-sm font-bold text-accent">{grade}</span>}
       </div>
 
       <div
