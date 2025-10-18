@@ -1,0 +1,21 @@
+# AWS Configuration
+aws_region = "us-east-1"
+
+# Environment
+environment = "production"
+
+# S3 Bucket Configuration
+# IMPORTANT: S3 bucket names must be globally unique across all AWS accounts
+# Replace with your desired bucket name (lowercase, hyphens allowed)
+s3_bucket_name = "cloud-voyage-portfolio-CHANGE-ME"
+
+# Domain Configuration (Optional)
+# domain_name = "youromain.com"
+# enable_route53 = true
+
+# Common Tags
+tags = {
+  Project     = "cloud-voyage-portfolio"
+  ManagedBy   = "Terraform"
+  CreatedDate = "2025-01-01"
+}

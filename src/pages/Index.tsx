@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Cloud, Shield, Network, CheckCircle, Headphones, Users, Download, Award, Server, Database, Lock, Globe } from "lucide-react";
+import { Cloud, Shield, Network, CheckCircle, Headphones, Users, Download, Award, Server, Database, Lock, Globe, Github, ExternalLink, Zap } from "lucide-react";
 import Starfield from "@/components/Starfield";
 import Navigation from "@/components/Navigation";
 import ProjectCard from "@/components/ProjectCard";
@@ -27,53 +27,105 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
   const projects = [{
-    title: "Multi-Tier AWS Architecture",
-    description: "Scalable web application with auto-scaling, load balancing, and RDS database integration for high availability.",
-    technologies: ["AWS EC2", "ALB", "RDS", "Auto Scaling", "CloudWatch"],
-    githubUrl: "#",
-    liveUrl: "#"
+    title: "Sam's Suit Shop - Highly Available Containerized Application",
+    description: "Production-grade e-commerce platform with containerized microservices architecture, load balancing, and high availability across multiple availability zones.",
+    technologies: ["Docker", "Kubernetes", "AWS ECS", "Load Balancer", "PostgreSQL", "Redis", "CI/CD"],
+    githubUrl: "https://github.com/ThomasGates3/Sams-Suit-Shop",
+    liveUrl: "https://github.com/ThomasGates3/Sams-Suit-Shop"
   }, {
-    title: "Serverless Data Processing",
-    description: "Event-driven architecture using Lambda functions for real-time data processing and analytics.",
-    technologies: ["AWS Lambda", "API Gateway", "DynamoDB", "S3", "EventBridge"],
-    githubUrl: "#",
-    liveUrl: "#"
+    title: "SpeakEasy TTS - AI Text to Speech Application",
+    description: "Intelligent text-to-speech system leveraging generative AI and neural networks to produce natural, human-like audio output with multi-language support.",
+    technologies: ["Python", "TensorFlow", "AWS Polly", "FastAPI", "React", "WebRTC", "Machine Learning"],
+    githubUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS",
+    liveUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS"
+  }, {
+    title: "Project V - Cloud Infrastructure Automation",
+    description: "Enterprise-grade infrastructure automation platform with infrastructure-as-code, automated deployment pipelines, and compliance monitoring.",
+    technologies: ["Terraform", "AWS CloudFormation", "Python", "Bash", "GitHub Actions", "CloudWatch", "Security Hub"],
+    githubUrl: "https://github.com/ThomasGates3/Project-V",
+    liveUrl: "https://github.com/ThomasGates3/Project-V"
   }, {
     title: "Cloud Security & Compliance",
-    description: "Implemented comprehensive security controls and compliance monitoring across AWS infrastructure.",
-    technologies: ["AWS IAM", "CloudTrail", "Config", "GuardDuty", "Security Hub"],
-    githubUrl: "#"
-  }, {
-    title: "Infrastructure as Code",
-    description: "Automated cloud infrastructure deployment and management using modern DevOps practices.",
-    technologies: ["AWS CloudFormation", "Terraform", "CI/CD", "CodePipeline"],
-    githubUrl: "#"
+    description: "Implemented comprehensive security controls and compliance monitoring across AWS infrastructure, achieving NIST, FISMA, and FedRAMP standards.",
+    technologies: ["AWS IAM", "CloudTrail", "Config", "GuardDuty", "Security Hub", "NIST Framework", "Python Automation"],
+    githubUrl: "https://github.com/ThomasGates3"
   }];
   const skills = [{
-    icon: Cloud,
-    label: "Cloud Computing",
-    description: "AWS Solutions Architecture"
-  }, {
     icon: Shield,
     label: "Cybersecurity",
-    description: "Security & Compliance"
+    description: "Security & Compliance",
+    proficiency: 4,
+    maxProficiency: 5
+  }, {
+    icon: Cloud,
+    label: "Cloud Concepts",
+    description: "AWS Solutions Architecture",
+    proficiency: 4,
+    maxProficiency: 5
   }, {
     icon: Network,
-    label: "Networking",
-    description: "Network Architecture"
+    label: "Full Stack Development",
+    description: "Frontend & Backend Engineering",
+    proficiency: 3,
+    maxProficiency: 5
+  }, {
+    icon: Zap,
+    label: "Generative AI",
+    description: "AI/ML & Neural Networks",
+    proficiency: 5,
+    maxProficiency: 5
   }, {
     icon: CheckCircle,
     label: "Auditing",
-    description: "Compliance Monitoring"
-  }, {
-    icon: Headphones,
-    label: "Technical Support",
-    description: "Customer Success"
+    description: "Compliance Monitoring",
+    proficiency: 4,
+    maxProficiency: 5
   }, {
     icon: Users,
     label: "Collaboration",
-    description: "Team Leadership"
+    description: "Team Leadership",
+    proficiency: 4,
+    maxProficiency: 5
   }];
+
+  const experience = [
+    {
+      role: "Cybersecurity Auditor",
+      company: "Universal Technical Services",
+      period: "Jan 2021 – Present",
+      duration: "4+ years",
+      description: "Designed and reviewed secure cloud infrastructure across AWS environments. Implemented 50+ security controls reducing critical vulnerabilities by 30%. Developed Python and Bash automation scripts for security policy enforcement.",
+      highlights: [
+        "Designed and reviewed secure cloud infrastructure across AWS environments, ensuring compliance with NIST, FISMA, FedRAMP, and security best practices",
+        "Implemented 50+ security controls and hardening initiatives reducing critical vulnerabilities by 30% and improving cloud security posture",
+        "Developed Python and Bash automation scripts to enforce security policies, streamline deployments, and reduce configuration errors by 22%",
+        "Conducted comprehensive security audits and vulnerability assessments across cloud platforms"
+      ]
+    },
+    {
+      role: "Technical Support Specialist",
+      company: "Spectrum",
+      period: "March 2023 – May 2024",
+      duration: "~1.5 years",
+      description: "Managed cloud infrastructure monitoring and security incident response for 40+ systems, reducing incidents by 35%. Performed network and endpoint hardening across cloud infrastructure.",
+      highlights: [
+        "Managed cloud infrastructure monitoring and security incident response for 40+ systems, reducing incidents by 35% through hardening controls",
+        "Performed network and endpoint hardening across cloud infrastructure, implementing security protocols that mitigated unauthorized access",
+        "Conducted vulnerability assessments and security scanning to identify cloud infrastructure risks",
+        "Supported business continuity through infrastructure monitoring and security controls, maintaining 99.2% uptime"
+      ]
+    },
+    {
+      role: "B.S. Computer Science",
+      company: "East Carolina University",
+      period: "2016 – 2020",
+      duration: "4 years",
+      description: "Strong foundation in computer science fundamentals, networking, and security principles.",
+      highlights: [
+        "Computer Science degree with focus on systems and security"
+      ]
+    }
+  ];
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Starfield />
       <Navigation />
@@ -189,32 +241,87 @@ const Index = () => {
               Skills & Expertise
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive technical skills spanning cloud computing, security, and customer success
+              Comprehensive technical skills spanning cloud computing, security, AI/ML, and customer success
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {skills.map((skill, index) => <div key={index} className="animate-on-scroll">
-                <SkillIcon {...skill} />
-              </div>)}
+          <div className="grid md:grid-cols-2 gap-8">
+            {skills.map((skill, index) => {
+              const IconComponent = skill.icon;
+              const proficiencyPercentage = (skill.proficiency / skill.maxProficiency) * 100;
+              return (
+                <div key={index} className="animate-on-scroll">
+                  <Card className="bg-card/50 backdrop-blur-sm border-border h-full">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-start gap-4 flex-1">
+                          <div className="p-3 rounded-lg bg-accent/10 text-accent">
+                            <IconComponent className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <h3 className="font-heading font-semibold text-lg">{skill.label}</h3>
+                            <p className="text-sm text-muted-foreground">{skill.description}</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-semibold text-accent">{skill.proficiency}/{skill.maxProficiency}</p>
+                        </div>
+                      </div>
+                      <div className="w-full bg-border rounded-full h-2 overflow-hidden">
+                        <div
+                          className="bg-accent h-full transition-all duration-500 rounded-full"
+                          style={{ width: `${proficiencyPercentage}%` }}
+                        />
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-2">{Math.round(proficiencyPercentage)}% Proficiency</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Resume Section */}
       <section id="resume" className="py-20 px-6 relative z-10">
-        <div className="container mx-auto max-w-4xl text-center">
-          <div className="animate-on-scroll">
-            <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
-              Resume
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Download my complete resume to learn more about my experience, 
-              certifications, and technical achievements.
-            </p>
-            <Button size="lg" className="glow-hover bg-accent text-accent-foreground hover:bg-accent/90">
-              <Download className="w-5 h-5 mr-2" />
-              Download Resume
-            </Button>
+        <div className="container mx-auto max-w-4xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="animate-on-scroll">
+              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
+                Download Resume
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Access my complete resume to learn more about my professional experience,
+                certifications, technical achievements, and qualifications.
+              </p>
+              <Button
+                size="lg"
+                className="glow-hover bg-accent text-accent-foreground hover:bg-accent/90"
+                onClick={() => window.open('/resume.pdf', '_blank')}
+              >
+                <Download className="w-5 h-5 mr-2" />
+                Download Resume
+              </Button>
+            </div>
+
+            <div className="animate-on-scroll">
+              <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8">
+                Experience Timeline
+              </h2>
+              <div className="space-y-6">
+                {experience.map((job, index) => (
+                  <div key={index} className="relative pl-6 border-l-2 border-accent pb-6">
+                    <div className="absolute w-3 h-3 bg-accent rounded-full -left-[7px] top-1 mt-1" />
+                    <div>
+                      <h3 className="font-heading font-semibold text-lg">{job.role}</h3>
+                      <p className="text-sm text-accent font-medium">{job.company}</p>
+                      <p className="text-xs text-muted-foreground mb-2">{job.period}</p>
+                      <p className="text-sm text-muted-foreground">{job.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
