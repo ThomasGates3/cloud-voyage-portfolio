@@ -104,7 +104,7 @@ resource "aws_cloudfront_distribution" "portfolio" {
   }
 
   # Cache behavior for API calls (if needed in future)
-  cache_behavior {
+  ordered_cache_behavior {
     path_pattern     = "/api/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
     cached_methods   = ["GET", "HEAD"]
