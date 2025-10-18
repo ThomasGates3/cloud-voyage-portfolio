@@ -365,6 +365,7 @@ const Index = () => {
                   src="/self-portrait.png"
                   alt="Thomas Gates III"
                   className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-lg border-2 border-accent/30 shadow-lg shadow-accent/20 transition-transform duration-300 hover:scale-105"
+                  style={{ objectPosition: 'center top' }}
                 />
                 {/* Decorative glow effect */}
                 <div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
