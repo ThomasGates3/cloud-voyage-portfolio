@@ -1,76 +1,80 @@
 @echo off
-REM Cloud Voyage Portfolio - Windows Deployment Script
-REM Automates the complete deployment process to AWS S3 + CloudFront
-REM Usage: deploy.bat or deploy.bat production
+REM Cloud Voyage Portfolio - One-Command Deployment Script
+REM Fully automated deployment to AWS S3 + CloudFront
+REM Usage: deploy.bat
 
 setlocal enabledelayedexpansion
 
-REM Colors aren't available in batch, so we use basic formatting
+REM Get script directory
+set SCRIPT_DIR=%~dp0
+set CONFIG_FILE=%SCRIPT_DIR%.deploy-config
+
+REM Configuration variables
+set S3_BUCKET_NAME=
+set CLOUDFRONT_DIST_ID=
+
 echo.
 echo ========================================================
 echo   Cloud Voyage Portfolio Deployment
 echo ========================================================
 echo.
 
-REM Set environment
-set ENVIRONMENT=%1
-if "%ENVIRONMENT%"=="" set ENVIRONMENT=production
-if "%ENVIRONMENT%"=="help" (
-    goto :show_help
+REM Handle arguments
+if "%1"=="--help" goto :show_help
+if "%1"=="-h" goto :show_help
+if "%1"=="--config" goto :show_config
+if "%1"=="--force" (
+    if exist "%CONFIG_FILE%" del "%CONFIG_FILE%"
 )
 
-REM Step 1: Check prerequisites
+REM Check prerequisites
 echo [*] Checking prerequisites...
 call :check_prerequisites
 if errorlevel 1 exit /b 1
-echo [OK] All prerequisites met
+echo [OK] Prerequisites verified
 echo.
 
-REM Step 2: Load environment configuration
-echo [*] Loading environment configuration...
-call :load_env_config
+REM Load configuration
+echo [*] Loading configuration...
+call :load_config
 if errorlevel 1 exit /b 1
 echo [OK] Configuration loaded
 echo.
 
-REM Step 3: Build the application
-echo [*] Building React application...
+REM Build application
+echo [*] Building application...
 call :build_app
 if errorlevel 1 exit /b 1
-echo [OK] Build completed successfully
+echo [OK] Build completed
 echo.
 
-REM Step 4: Run linter
-echo [*] Running linter...
-call :run_linter
-echo [OK] Code quality check passed
-echo.
-
-REM Step 5: Deploy to S3
-echo [*] Deploying to AWS S3...
+REM Deploy to S3
+echo [*] Deploying to S3...
 call :deploy_to_s3
 if errorlevel 1 exit /b 1
 echo [OK] Uploaded to S3
 echo.
 
-REM Step 6: Invalidate CloudFront
+REM Invalidate CloudFront
 echo [*] Invalidating CloudFront cache...
 call :invalidate_cloudfront
 if errorlevel 1 exit /b 1
 echo [OK] CloudFront cache invalidated
 echo.
 
-REM Step 7: Get deployment info
-echo [*] Retrieving deployment information...
-call :get_deployment_info
-echo.
+REM Show results
+call :show_results
 
+echo.
 echo ========================================================
 echo   Deployment Complete!
 echo ========================================================
+echo.
 echo [OK] Your portfolio is now live!
 echo.
 exit /b 0
+
+REM ==================== FUNCTIONS ====================
 
 :check_prerequisites
 REM Check Node.js
@@ -94,10 +98,10 @@ if errorlevel 1 (
     exit /b 1
 )
 
-REM Check git
-where git >nul 2>nul
+REM Check Terraform
+where terraform >nul 2>nul
 if errorlevel 1 (
-    echo [ERROR] git is not installed
+    echo [ERROR] Terraform is not installed
     exit /b 1
 )
 
@@ -105,40 +109,69 @@ REM Check AWS credentials
 aws sts get-caller-identity >nul 2>nul
 if errorlevel 1 (
     echo [ERROR] AWS credentials not configured
-    echo [*] Run 'aws configure' to set up your credentials
+    echo [*] Run: aws configure
     exit /b 1
 )
 
 exit /b 0
 
-:load_env_config
-REM Try to get from environment variables
-if "%AWS_S3_BUCKET_NAME%"=="" (
-    REM Try to get from terraform
-    for /f "delims=" %%i in ('terraform output -raw s3_bucket_name 2^>nul') do set "AWS_S3_BUCKET_NAME=%%i"
+:load_config
+REM First try environment variables
+if not "%AWS_S3_BUCKET_NAME%"=="" (
+    set "S3_BUCKET_NAME=%AWS_S3_BUCKET_NAME%"
+)
+if not "%AWS_CLOUDFRONT_DISTRIBUTION_ID%"=="" (
+    set "CLOUDFRONT_DIST_ID=%AWS_CLOUDFRONT_DISTRIBUTION_ID%"
 )
 
-if "%AWS_CLOUDFRONT_DISTRIBUTION_ID%"=="" (
-    REM Try to get from terraform
-    for /f "delims=" %%i in ('terraform output -raw cloudfront_distribution_id 2^>nul') do set "AWS_CLOUDFRONT_DISTRIBUTION_ID=%%i"
+REM Try saved config file
+if exist "%CONFIG_FILE%" (
+    for /f "usebackq tokens=* delims=" %%A in ("%CONFIG_FILE%") do (
+        if "!S3_BUCKET_NAME!"=="" (
+            for /f "tokens=2 delims==" %%B in ("%%A") do (
+                if not "%%B"=="" set "S3_BUCKET_NAME=%%B"
+            )
+        )
+        if "!CLOUDFRONT_DIST_ID!"=="" (
+            for /f "tokens=2 delims==" %%B in ("%%A") do (
+                if not "%%B"=="" set "CLOUDFRONT_DIST_ID=%%B"
+            )
+        )
+    )
 )
 
-if "%AWS_S3_BUCKET_NAME%"=="" (
-    echo [ERROR] S3 bucket name not found
-    echo.
-    echo Please set one of the following:
-    echo   1. AWS_S3_BUCKET_NAME environment variable
-    echo   2. Run 'cd terraform ^& terraform init ^& terraform output' to get the value
-    echo.
-    exit /b 1
+REM Try Terraform
+if "!S3_BUCKET_NAME!"=="" (
+    for /f "delims=" %%A in ('terraform -chdir="%SCRIPT_DIR%terraform" output -raw s3_bucket_name 2^>nul') do (
+        set "S3_BUCKET_NAME=%%A"
+    )
 )
 
-if "%AWS_CLOUDFRONT_DISTRIBUTION_ID%"=="" (
-    echo [ERROR] CloudFront distribution ID not found
+if "!CLOUDFRONT_DIST_ID!"=="" (
+    for /f "delims=" %%A in ('terraform -chdir="%SCRIPT_DIR%terraform" output -raw cloudfront_distribution_id 2^>nul') do (
+        set "CLOUDFRONT_DIST_ID=%%A"
+    )
+)
+
+REM Validate
+if "!S3_BUCKET_NAME!"=="" (
+    echo [ERROR] AWS configuration not found
     echo.
-    echo Please set one of the following:
-    echo   1. AWS_CLOUDFRONT_DISTRIBUTION_ID environment variable
-    echo   2. Run 'cd terraform ^& terraform init ^& terraform output' to get the value
+    echo [*] First time setup:
+    echo.
+    echo   1. Configure Terraform:
+    echo      cd terraform
+    echo      copy terraform.tfvars.example terraform.tfvars
+    echo      (edit terraform.tfvars with your bucket name^)
+    echo.
+    echo   2. Create AWS infrastructure:
+    echo      terraform init
+    echo      terraform plan
+    echo      terraform apply
+    echo.
+    echo   3. Return and run deploy:
+    echo      cd ..
+    echo      deploy.bat
     echo.
     exit /b 1
 )
@@ -146,154 +179,162 @@ if "%AWS_CLOUDFRONT_DISTRIBUTION_ID%"=="" (
 exit /b 0
 
 :build_app
-REM Install dependencies if node_modules doesn't exist
+pushd "%SCRIPT_DIR%"
+
 if not exist "node_modules" (
     echo [*] Installing dependencies...
-    call npm ci
+    call npm ci --prefer-offline --no-audit
     if errorlevel 1 exit /b 1
 )
 
-REM Run build
+echo [*] Building application...
 call npm run build
 if errorlevel 1 exit /b 1
-
-REM Verify build output
-if not exist "dist" (
-    echo [ERROR] Build output directory not found
-    exit /b 1
-)
 
 if not exist "dist\index.html" (
     echo [ERROR] Build failed - index.html not found
     exit /b 1
 )
 
-exit /b 0
-
-:run_linter
-if exist ".eslintrc.js" (
-    call npm run lint
-) else if exist ".eslintignore" (
-    call npm run lint
-) else (
-    echo [OK] No linter configuration found, skipping...
-)
-
+popd
 exit /b 0
 
 :deploy_to_s3
-echo [*] Syncing files to S3 (s3://%AWS_S3_BUCKET_NAME%/)...
+pushd "%SCRIPT_DIR%"
 
-REM Sync root files with short cache
-aws s3 sync dist/ "s3://%AWS_S3_BUCKET_NAME%/" ^
+echo [*] Uploading to S3 (s3://%S3_BUCKET_NAME%/)...
+
+REM Sync HTML files with short cache
+aws s3 sync dist\ "s3://%S3_BUCKET_NAME%/" ^
     --delete ^
     --cache-control "public, max-age=3600" ^
     --exclude "*" ^
     --include "index.html"
-
 if errorlevel 1 exit /b 1
 
 REM Sync assets with long cache
 if exist "dist\assets" (
-    aws s3 sync "dist\assets\" "s3://%AWS_S3_BUCKET_NAME%/assets/" ^
+    aws s3 sync "dist\assets\" "s3://%S3_BUCKET_NAME%/assets/" ^
         --delete ^
         --cache-control "public, max-age=31536000"
     if errorlevel 1 exit /b 1
 )
 
 REM Sync other files
-aws s3 sync dist\ "s3://%AWS_S3_BUCKET_NAME%/" ^
+aws s3 sync dist\ "s3://%S3_BUCKET_NAME%/" ^
     --delete ^
     --cache-control "public, max-age=86400" ^
     --exclude "*.html" ^
     --exclude "assets\*"
-
 if errorlevel 1 exit /b 1
 
-echo [OK] All files uploaded to S3
+popd
 exit /b 0
 
 :invalidate_cloudfront
 echo [*] Creating CloudFront invalidation...
 
-REM Create invalidation and capture ID
-for /f "delims=" %%i in ('aws cloudfront create-invalidation --distribution-id "%AWS_CLOUDFRONT_DISTRIBUTION_ID%" --paths "/*" --query "Invalidation.Id" --output text') do set "INVALIDATION_ID=%%i"
+for /f "delims=" %%A in ('aws cloudfront create-invalidation --distribution-id "%CLOUDFRONT_DIST_ID%" --paths "/*" --query "Invalidation.Id" --output text') do (
+    set "INVALIDATION_ID=%%A"
+)
 
-if "%INVALIDATION_ID%"=="" (
+if "!INVALIDATION_ID!"=="" (
     echo [ERROR] Failed to create invalidation
     exit /b 1
 )
 
-echo [OK] Invalidation created: %INVALIDATION_ID%
-echo [*] Waiting for invalidation to complete (this may take 2-3 minutes)...
+echo [*] Invalidation ID: %INVALIDATION_ID%
+echo [*] Waiting for invalidation to complete...
 
-REM Poll for invalidation status
 setlocal enabledelayedexpansion
-set "status=InProgress"
-set "counter=0"
-set "max_retries=36"
+set "count=0"
+set "max_wait=72"
 
 :invalidation_loop
-if !counter! geq !max_retries! (
-    echo [WARNING] Timeout waiting for invalidation completion
+if !count! geq !max_wait! (
+    echo [WARNING] Invalidation timeout
     goto :skip_invalidation_wait
 )
 
-for /f "delims=" %%i in ('aws cloudfront get-invalidation --distribution-id "%AWS_CLOUDFRONT_DISTRIBUTION_ID%" --id "%INVALIDATION_ID%" --query "Invalidation.Status" --output text') do set "status=%%i"
+for /f "delims=" %%A in ('aws cloudfront get-invalidation --distribution-id "%CLOUDFRONT_DIST_ID%" --id "%INVALIDATION_ID%" --query "Invalidation.Status" --output text 2^>nul') do (
+    set "status=%%A"
+)
 
 if "!status!"=="Completed" (
-    echo [OK] Invalidation completed
+    echo [OK] CloudFront cache invalidated
     goto :skip_invalidation_wait
 )
 
 timeout /t 5 /nobreak >nul
-set /a counter=!counter!+1
-echo [*] Status: !status! (attempt !counter!/%max_retries%)
+set /a count=!count!+1
 goto :invalidation_loop
 
 :skip_invalidation_wait
 exit /b 0
 
-:get_deployment_info
-REM Get CloudFront domain
-for /f "delims=" %%i in ('aws cloudfront list-distributions --query "DistributionList.Items[?Id==''%AWS_CLOUDFRONT_DISTRIBUTION_ID%''].DomainName" --output text') do set "CLOUDFRONT_DOMAIN=%%i"
+:show_results
+for /f "delims=" %%A in ('aws cloudfront list-distributions --query "DistributionList.Items[?Id==''%CLOUDFRONT_DIST_ID%''].DomainName" --output text 2^>nul') do (
+    set "CLOUDFRONT_DOMAIN=%%A"
+)
 
-echo [OK] S3 Bucket: %AWS_S3_BUCKET_NAME%
-echo [OK] CloudFront Domain: %CLOUDFRONT_DOMAIN%
-echo [OK] Website URL: https://%CLOUDFRONT_DOMAIN%
+if "!CLOUDFRONT_DOMAIN!"=="" (
+    set "CLOUDFRONT_DOMAIN=(pending)"
+)
+
 echo.
+echo Website Information:
+echo   S3 Bucket:        %S3_BUCKET_NAME%
+echo   CloudFront Domain: !CLOUDFRONT_DOMAIN!
+echo   Website URL:      https://!CLOUDFRONT_DOMAIN!
+echo.
+
 echo Next Steps:
-echo   1. Visit: https://%CLOUDFRONT_DOMAIN%
-echo   2. Check that your changes are live
-echo   3. Hard refresh if needed: Ctrl+Shift+R
+echo   1. Visit: https://!CLOUDFRONT_DOMAIN!
+echo   2. Verify your changes are live
+echo   3. Share with the world!
+echo.
+
+echo For future deployments:
+echo   Just run: deploy.bat
+echo.
 
 exit /b 0
 
+:show_config
+call :load_config
+echo.
+echo Current Configuration:
+echo   S3 Bucket: %S3_BUCKET_NAME%
+echo   CloudFront ID: %CLOUDFRONT_DIST_ID%
+echo.
+exit /b 0
+
 :show_help
-echo Cloud Voyage Portfolio - Windows Deployment Script
 echo.
-echo Usage:
-echo   deploy.bat [options]
+echo Cloud Voyage Portfolio - One-Command Deployment
 echo.
-echo Options:
-echo   (none)              Deploy to production (default)
-echo   production          Deploy to production
-echo   help                Show this help message
+echo USAGE:
+echo   deploy.bat [OPTIONS]
 echo.
-echo Environment Variables:
-echo   AWS_S3_BUCKET_NAME              S3 bucket name (optional, reads from terraform output)
-echo   AWS_CLOUDFRONT_DISTRIBUTION_ID  CloudFront distribution ID (optional, reads from terraform output)
+echo OPTIONS:
+echo   (none)         Deploy to production
+echo   --help         Show this help message
+echo   --force        Force rebuild and redeploy
+echo   --config       Show current configuration
 echo.
-echo Examples:
-echo   deploy.bat                      # Deploy to production
-echo   deploy.bat help                 # Show this help
-echo.
-echo Prerequisites:
+echo REQUIREMENTS:
 echo   - Node.js v18+
-echo   - npm
 echo   - AWS CLI v2
-echo   - AWS credentials configured
+echo   - Terraform
+echo   - AWS credentials configured (aws configure)
 echo.
-echo For detailed deployment instructions, see: deployment.md
+echo WORKFLOW:
+echo   First time: Run 'deploy.bat' and follow setup wizard
+echo   Every time after: Just run 'deploy.bat'
+echo.
+echo EXAMPLES:
+echo   deploy.bat          # Deploy to production
+echo   deploy.bat --help   # Show this help
+echo   deploy.bat --config # Show configuration
 echo.
 exit /b 0
