@@ -2,6 +2,63 @@
 
 This guide provides step-by-step instructions for deploying the Cloud Voyage Portfolio website to AWS using Terraform and CloudFront.
 
+## Quick Deploy (Automated)
+
+For the fastest deployment experience, use the automated deployment scripts:
+
+### Mac/Linux
+
+```bash
+./deploy.sh
+```
+
+The script will:
+- ✓ Check all prerequisites (Node.js, npm, AWS CLI, Terraform, AWS credentials)
+- ✓ Guide you through setup if this is your first deployment
+- ✓ Build your React application
+- ✓ Run code quality checks
+- ✓ Upload files to S3 with smart caching
+- ✓ Invalidate CloudFront cache
+- ✓ Show your live website URL
+
+### Windows
+
+```bash
+deploy.bat
+```
+
+Same features as the Mac/Linux version, optimized for Windows Command Prompt and PowerShell.
+
+### Deployment Script Options
+
+```bash
+# Deploy to production
+./deploy.sh
+
+# Show current configuration
+./deploy.sh --config
+
+# Force rebuild and redeploy
+./deploy.sh --force
+
+# Show help
+./deploy.sh --help
+```
+
+**First Time Setup:** The script will detect that Terraform infrastructure hasn't been created yet and guide you through the setup wizard with clear instructions.
+
+---
+
+## Manual Deployment (Step-by-Step)
+
+**When to use this section:**
+- Understanding each step in detail
+- Troubleshooting deployment issues
+- Integrating with CI/CD pipelines
+- Customizing the deployment process
+
+---
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
