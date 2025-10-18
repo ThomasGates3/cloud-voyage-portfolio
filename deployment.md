@@ -288,9 +288,41 @@ curl -I https://yourname.com
 # Should show: HTTP/2 200
 ```
 
-## Updating Your Website
+## Automatic Deployment with GitHub Actions CI/CD
 
-When you make changes to your portfolio:
+**⭐ Recommended Approach** - Automatic deployment on every push
+
+Once you've deployed to AWS once (using Terraform), you can set up GitHub Actions to automatically deploy on every commit:
+
+1. **Complete the CI/CD Setup** (see [CI_CD_SETUP.md](./CI_CD_SETUP.md))
+2. **Push to main branch:**
+   ```bash
+   git add -A
+   git commit -m "Update portfolio"
+   git push origin main
+   ```
+3. **Website auto-updates in 2-3 minutes**
+
+### How It Works
+
+```
+Your commit → GitHub Actions → Build & Test → Deploy to S3 → Invalidate CloudFront → Live!
+```
+
+**Benefits:**
+- ✅ Fully automated - no manual steps
+- ✅ 2-3 minute deployment time
+- ✅ Automatic rollback capability
+- ✅ Zero downtime updates
+- ✅ Free (GitHub Actions included)
+
+For detailed setup instructions, see **[CI_CD_SETUP.md](./CI_CD_SETUP.md)**.
+
+---
+
+## Updating Your Website (Manual)
+
+When you make changes to your portfolio (without CI/CD):
 
 1. **Rebuild the application:**
 

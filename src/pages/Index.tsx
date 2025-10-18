@@ -8,6 +8,7 @@ import Navigation from "@/components/Navigation";
 import ProjectCard from "@/components/ProjectCard";
 import SkillIcon from "@/components/SkillIcon";
 import ContactForm from "@/components/ContactForm";
+import PokemonHPBar from "@/components/PokemonHPBar";
 import spaceHero from "@/assets/space-hero.jpg";
 const Index = () => {
   useEffect(() => {
@@ -29,7 +30,7 @@ const Index = () => {
   const projects = [{
     title: "Sam's Suit Shop - Highly Available Containerized Application",
     description: "Production-grade e-commerce platform with containerized microservices architecture, load balancing, and high availability across multiple availability zones.",
-    technologies: ["Docker", "Kubernetes", "AWS ECS", "Load Balancer", "PostgreSQL", "Redis", "CI/CD"],
+    technologies: ["Docker", "AWS ECS", "AWS CloudFront", "Load Balancer", "PostgreSQL", "AWS VPC", "CI/CD"],
     githubUrl: "https://github.com/ThomasGates3/Sams-Suit-Shop",
     liveUrl: "https://github.com/ThomasGates3/Sams-Suit-Shop"
   }, {
@@ -233,55 +234,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 relative z-10">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
-              Skills & Expertise
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive technical skills spanning cloud computing, security, AI/ML, and customer success
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {skills.map((skill, index) => {
-              const IconComponent = skill.icon;
-              const proficiencyPercentage = (skill.proficiency / skill.maxProficiency) * 100;
-              return (
-                <div key={index} className="animate-on-scroll">
-                  <Card className="bg-card/50 backdrop-blur-sm border-border h-full">
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-start gap-4 flex-1">
-                          <div className="p-3 rounded-lg bg-accent/10 text-accent">
-                            <IconComponent className="w-6 h-6" />
-                          </div>
-                          <div>
-                            <h3 className="font-heading font-semibold text-lg">{skill.label}</h3>
-                            <p className="text-sm text-muted-foreground">{skill.description}</p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-semibold text-accent">{skill.proficiency}/{skill.maxProficiency}</p>
-                        </div>
-                      </div>
-                      <div className="w-full bg-border rounded-full h-2 overflow-hidden">
-                        <div
-                          className="bg-accent h-full transition-all duration-500 rounded-full"
-                          style={{ width: `${proficiencyPercentage}%` }}
-                        />
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-2">{Math.round(proficiencyPercentage)}% Proficiency</p>
-                    </CardContent>
-                  </Card>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Resume Section */}
       <section id="resume" className="py-20 px-6 relative z-10">
         <div className="container mx-auto max-w-4xl">
@@ -322,6 +274,42 @@ const Index = () => {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-6 relative z-10">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-16 animate-on-scroll">
+            <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
+              Skills & Expertise
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive technical proficiency spanning cloud computing, security, AI/ML, and more
+            </p>
+          </div>
+          <div className="space-y-8">
+            {skills.map((skill, index) => (
+              <div key={index} className="animate-on-scroll">
+                <div className="mb-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 rounded-lg bg-accent/10 text-accent">
+                      {skill.icon && <skill.icon className="w-5 h-5" />}
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-semibold text-lg">{skill.label}</h3>
+                      <p className="text-sm text-muted-foreground">{skill.description}</p>
+                    </div>
+                  </div>
+                  <PokemonHPBar
+                    proficiency={skill.proficiency}
+                    maxProficiency={skill.maxProficiency}
+                    label=""
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

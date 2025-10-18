@@ -1,0 +1,116 @@
+name: Build & Deploy to AWS S3 + CloudFront
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint code
+        run: npm run lint --if-present
+
+      - name: Build application
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist/
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy to S3
+        run: |
+          aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET_NAME }}/ \
+            --delete \
+            --cache-control "public, max-age=3600" \
+            --exclude "*.js" --exclude "*.css" \
+            --exclude "*.jpg" --exclude "*.jpeg" --exclude "*.png" --exclude "*.gif" \
+            --exclude "*.svg" --exclude "*.pdf"
+
+          # Deploy static assets with longer cache
+          aws s3 sync dist/assets/ s3://${{ secrets.AWS_S3_BUCKET_NAME }}/assets/ \
+            --cache-control "public, max-age=31536000" \
+            --delete
+
+          # Deploy index.html with short cache
+          aws s3 cp dist/index.html s3://${{ secrets.AWS_S3_BUCKET_NAME }}/index.html \
+            --cache-control "public, max-age=300" \
+            --content-type "text/html"
+
+          # Deploy resume.pdf if it exists
+          if [ -f dist/resume.pdf ]; then
+            aws s3 cp dist/resume.pdf s3://${{ secrets.AWS_S3_BUCKET_NAME }}/resume.pdf \
+              --cache-control "public, max-age=86400"
+          fi
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*" \
+            --query 'Invalidation.Id' \
+            --output text
+
+      - name: Get deployment URL
+        run: |
+          CLOUDFRONT_DOMAIN=$(aws cloudfront list-distributions \
+            --query "DistributionList.Items[?Id=='${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}'].DomainName" \
+            --output text)
+          echo "Deployment complete!"
+          echo "Website URL: https://$CLOUDFRONT_DOMAIN"
+
+  notify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Deployment Status
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ Deployment successful!"
+            echo "Your website has been updated and is live on CloudFront."
+          else
+            echo "❌ Deployment failed!"
+            echo "Please check the logs above for details."
+          fi
