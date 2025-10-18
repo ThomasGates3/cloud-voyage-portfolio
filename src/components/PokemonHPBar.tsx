@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SkillDetail from './SkillDetail';
 
 interface PokemonHPBarProps {
   proficiency: number;
   maxProficiency: number;
   label: string;
   grade?: string;
+  skillName?: string;
+  tools?: string[];
 }
 
-const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency, label, grade }) => {
+const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency, label, grade, skillName, tools }) => {
+  const [showDetail, setShowDetail] = useState(false);
   const percentage = (proficiency / maxProficiency) * 100;
 
   // Determine color based on HP percentage
@@ -21,7 +25,7 @@ const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency
   const barColor = getBarColor();
 
   return (
-    <div className="w-full animate-on-scroll">
+    <div className="w-full animate-on-scroll relative">
       <style>{`
         @keyframes pokemonSlideIn {
           from {
@@ -43,6 +47,12 @@ const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency
           position: relative;
           font-family: 'Courier New', monospace;
           background: #1f2937;
+          transition: all 0.3s ease;
+          cursor: ${tools ? 'pointer' : 'default'};
+        }
+
+        .pokemon-hp-container:hover {
+          ${tools ? `box-shadow: 0 0 20px currentColor, inset 0 0 10px rgba(255,255,255,0.1);` : ''}
         }
 
         .pokemon-hp-container::before {
@@ -58,14 +68,25 @@ const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency
         }
       `}</style>
 
+      {/* Skill Detail Tooltip */}
+      {skillName && tools && (
+        <SkillDetail
+          skillName={skillName}
+          tools={tools}
+          isVisible={showDetail}
+        />
+      )}
+
       <div className="flex items-center justify-between mb-2">
         <span className="font-heading font-bold text-lg text-foreground">{label}</span>
         {grade && <span className="font-mono text-sm font-bold text-accent">{grade}</span>}
       </div>
 
       <div
-        className="pokemon-hp-container h-8 rounded-sm overflow-hidden"
+        className="pokemon-hp-container h-8 rounded-sm overflow-visible"
         style={{ borderColor: barColor }}
+        onMouseEnter={() => setShowDetail(true)}
+        onMouseLeave={() => setShowDetail(false)}
       >
         <div
           className="pokemon-bar h-full transition-all duration-300"
@@ -76,7 +97,10 @@ const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency
         />
       </div>
 
-      <div className="flex justify-end mt-2">
+      <div className="flex justify-between items-center mt-2">
+        <span className="text-xs text-muted-foreground">
+          {tools && skillName && 'Hover to see tools →'}
+        </span>
         <span className="text-xs font-mono text-muted-foreground">
           {percentage <= 30 && '⚠️ CRITICAL'}
           {percentage > 30 && percentage <= 50 && '⚠️ LOW'}

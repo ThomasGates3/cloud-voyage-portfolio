@@ -9,6 +9,7 @@ import ProjectCard from "@/components/ProjectCard";
 import SkillIcon from "@/components/SkillIcon";
 import ContactForm from "@/components/ContactForm";
 import PokemonHPBar from "@/components/PokemonHPBar";
+import CertificationCard from "@/components/CertificationCard";
 import spaceHero from "@/assets/space-hero.jpg";
 const Index = () => {
   useEffect(() => {
@@ -51,9 +52,37 @@ const Index = () => {
     technologies: ["AWS IAM", "CloudTrail", "Config", "GuardDuty", "Security Hub", "NIST Framework", "Python Automation"],
     githubUrl: "https://github.com/ThomasGates3"
   }];
+  const certifications = [
+    {
+      title: "AWS Cloud Practitioner",
+      logo: "/aws-certified-cloud-practitioner.png",
+      verificationUrl: "https://www.credly.com/badges/50ae5103-1fef-46ae-8b88-955b8bda1d8f/linked_in_profile"
+    },
+    {
+      title: "Certified Information Systems Auditor (CISA)",
+      logo: "/cisa-text-logo -nobg.png",
+      verificationUrl: "https://www.isaca.org/credentialing/cisa"
+    },
+    {
+      title: "Oracle Cloud Infrastructure Associate",
+      logo: "/OCI25FNDCFAV1.png",
+      verificationUrl: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=06B0C2173A4AC507C3BC2AACA4C52D1BDC25ABA21CED322D059FF3E95B5AE0A1"
+    }
+  ];
+
+  const skillTools = {
+    "Cybersecurity": ["Nessus", "Splunk", "AWS Security Hub", "AWS GuardDuty", "AWS Config"],
+    "Cloud Concepts": ["Compute", "Storage", "Networking", "Security"],
+    "Full Stack Development": ["HTML", "CSS", "React", "Python", "Ruby"],
+    "Generative AI": ["Claude", "ChatGPT", "Google AI Studio", "n8n"],
+    "Customer Service": ["Empathetic", "Solution-Oriented", "De-escalation", "ARM Statements"],
+    "Collaboration": ["Cross-Functional Collaboration", "Mentorship", "Leading by Example"]
+  };
+
   const skills = [{
     icon: Shield,
     label: "Cybersecurity",
+    skillName: "Cybersecurity",
     description: "Security & Compliance",
     proficiency: 82,
     maxProficiency: 100,
@@ -61,6 +90,7 @@ const Index = () => {
   }, {
     icon: Cloud,
     label: "Cloud Concepts",
+    skillName: "Cloud Concepts",
     description: "AWS Solutions Architecture",
     proficiency: 87,
     maxProficiency: 100,
@@ -68,6 +98,7 @@ const Index = () => {
   }, {
     icon: Network,
     label: "Full Stack Development",
+    skillName: "Full Stack Development",
     description: "Frontend & Backend Engineering",
     proficiency: 64,
     maxProficiency: 100,
@@ -75,6 +106,7 @@ const Index = () => {
   }, {
     icon: Zap,
     label: "Generative AI",
+    skillName: "Generative AI",
     description: "AI/ML & Neural Networks",
     proficiency: 93,
     maxProficiency: 100,
@@ -82,6 +114,7 @@ const Index = () => {
   }, {
     icon: Headphones,
     label: "Customer Service",
+    skillName: "Customer Service",
     description: "Client Success & Support",
     proficiency: 98,
     maxProficiency: 100,
@@ -89,6 +122,7 @@ const Index = () => {
   }, {
     icon: Users,
     label: "Collaboration",
+    skillName: "Collaboration",
     description: "Team Leadership",
     proficiency: 88,
     maxProficiency: 100,
@@ -230,6 +264,31 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Certifications Section */}
+      <section id="certifications" className="py-20 px-6 relative z-10">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16 animate-on-scroll">
+            <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
+              Certifications & Credentials
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Industry-recognized certifications validating my expertise in cloud, security, and systems architecture
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {certifications.map((cert, index) => (
+              <div key={index} className="animate-on-scroll">
+                <CertificationCard
+                  title={cert.title}
+                  logo={cert.logo}
+                  verificationUrl={cert.verificationUrl}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6 relative z-10">
         <div className="container mx-auto max-w-4xl">
@@ -259,6 +318,8 @@ const Index = () => {
                     maxProficiency={skill.maxProficiency}
                     label=""
                     grade={skill.grade}
+                    skillName={skill.skillName}
+                    tools={skillTools[skill.skillName as keyof typeof skillTools]}
                   />
                 </div>
               </div>
@@ -291,31 +352,16 @@ const Index = () => {
                 <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">Cloud Architecture</Badge>
               </div>
             </div>
-            <div className="animate-on-scroll">
-              <Card className="bg-card/50 backdrop-blur-sm border-border p-8">
-                <div className="grid grid-cols-2 gap-6 text-center">
-                  <div>
-                    <Server className="w-8 h-8 text-accent mx-auto mb-2" />
-                    <p className="font-semibold">4+ Years</p>
-                    <p className="text-sm text-muted-foreground">Cyber Security</p>
-                  </div>
-                  <div>
-                    <Cloud className="w-8 h-8 text-accent mx-auto mb-2" />
-                    <p className="font-semibold">AWS</p>
-                    <p className="text-sm text-muted-foreground">Cloud Practicioner</p>
-                  </div>
-                  <div>
-                    <Shield className="w-8 h-8 text-accent mx-auto mb-2" />
-                    <p className="font-semibold">CISA</p>
-                    <p className="text-sm text-muted-foreground">Certified</p>
-                  </div>
-                  <div>
-                    <Award className="w-8 h-8 text-accent mx-auto mb-2" />
-                    <p className="font-semibold">Excellence</p>
-                    <p className="text-sm text-muted-foreground">Driven</p>
-                  </div>
-                </div>
-              </Card>
+            <div className="animate-on-scroll flex justify-center">
+              <div className="relative">
+                <img
+                  src="/self-portrait.png"
+                  alt="Thomas Gates III"
+                  className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-lg border-2 border-accent/30 shadow-lg shadow-accent/20 transition-transform duration-300 hover:scale-105"
+                />
+                {/* Decorative glow effect */}
+                <div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              </div>
             </div>
           </div>
         </div>
