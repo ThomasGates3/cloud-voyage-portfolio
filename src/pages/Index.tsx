@@ -86,7 +86,8 @@ const Index = () => {
     description: "Security & Compliance",
     proficiency: 82,
     maxProficiency: 100,
-    grade: "B+"
+    grade: "B+",
+    masteredLabel: "PROFICIENT"
   }, {
     icon: Cloud,
     label: "Cloud Concepts",
@@ -94,7 +95,8 @@ const Index = () => {
     description: "AWS Solutions Architecture",
     proficiency: 87,
     maxProficiency: 100,
-    grade: "A-"
+    grade: "A-",
+    masteredLabel: "PROFICIENT"
   }, {
     icon: Network,
     label: "Full Stack Development",
@@ -102,7 +104,8 @@ const Index = () => {
     description: "Frontend & Backend Engineering",
     proficiency: 64,
     maxProficiency: 100,
-    grade: "B-"
+    grade: "B-",
+    masteredLabel: "PROFICIENT"
   }, {
     icon: Zap,
     label: "Generative AI",
@@ -110,7 +113,8 @@ const Index = () => {
     description: "AI/ML & Neural Networks",
     proficiency: 93,
     maxProficiency: 100,
-    grade: "A"
+    grade: "A",
+    masteredLabel: "PROFICIENT"
   }, {
     icon: Headphones,
     label: "Customer Service",
@@ -118,7 +122,8 @@ const Index = () => {
     description: "Client Success & Support",
     proficiency: 98,
     maxProficiency: 100,
-    grade: "A+"
+    grade: "A+",
+    masteredLabel: "EXCELLENT"
   }, {
     icon: Users,
     label: "Collaboration",
@@ -126,7 +131,8 @@ const Index = () => {
     description: "Team Leadership",
     proficiency: 88,
     maxProficiency: 100,
-    grade: "B"
+    grade: "B",
+    masteredLabel: "TEAM PLAYER"
   }];
 
   const experience = [
@@ -320,6 +326,7 @@ const Index = () => {
                     grade={skill.grade}
                     skillName={skill.skillName}
                     tools={skillTools[skill.skillName as keyof typeof skillTools]}
+                    masteredLabel={skill.masteredLabel}
                   />
                 </div>
               </div>

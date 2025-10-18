@@ -8,9 +8,10 @@ interface PokemonHPBarProps {
   grade?: string;
   skillName?: string;
   tools?: string[];
+  masteredLabel?: string;
 }
 
-const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency, label, grade, skillName, tools }) => {
+const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency, label, grade, skillName, tools, masteredLabel }) => {
   const [showDetail, setShowDetail] = useState(false);
   const percentage = (proficiency / maxProficiency) * 100;
 
@@ -105,7 +106,7 @@ const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency
           {percentage <= 30 && '⚠️ CRITICAL'}
           {percentage > 30 && percentage <= 50 && '⚠️ LOW'}
           {percentage > 50 && percentage <= 70 && '⚡ MODERATE'}
-          {percentage > 70 && '✓ MASTERED'}
+          {percentage > 70 && `✓ ${masteredLabel || 'MASTERED'}`}
         </span>
       </div>
     </div>
