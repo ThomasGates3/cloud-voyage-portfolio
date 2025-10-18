@@ -77,10 +77,7 @@ const PokemonHPBar: React.FC<PokemonHPBarProps> = ({ proficiency, maxProficiency
         />
       </div>
 
-      <div className="flex justify-between items-center mt-2">
-        <span className="text-xs font-mono text-muted-foreground">
-          {Math.round(percentage)}%
-        </span>
+      <div className="flex justify-end mt-2">
         <span className="text-xs font-mono text-muted-foreground">
           {percentage <= 30 && '⚠️ CRITICAL'}
           {percentage > 30 && percentage <= 50 && '⚠️ LOW'}

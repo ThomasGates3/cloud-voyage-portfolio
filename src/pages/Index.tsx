@@ -55,38 +55,38 @@ const Index = () => {
     icon: Shield,
     label: "Cybersecurity",
     description: "Security & Compliance",
-    proficiency: 4,
-    maxProficiency: 5
+    proficiency: 82,
+    maxProficiency: 100
   }, {
     icon: Cloud,
     label: "Cloud Concepts",
     description: "AWS Solutions Architecture",
-    proficiency: 4,
-    maxProficiency: 5
+    proficiency: 87,
+    maxProficiency: 100
   }, {
     icon: Network,
     label: "Full Stack Development",
     description: "Frontend & Backend Engineering",
-    proficiency: 3,
-    maxProficiency: 5
+    proficiency: 64,
+    maxProficiency: 100
   }, {
     icon: Zap,
     label: "Generative AI",
     description: "AI/ML & Neural Networks",
-    proficiency: 5,
-    maxProficiency: 5
+    proficiency: 93,
+    maxProficiency: 100
   }, {
-    icon: CheckCircle,
-    label: "Auditing",
-    description: "Compliance Monitoring",
-    proficiency: 4,
-    maxProficiency: 5
+    icon: Headphones,
+    label: "Customer Service",
+    description: "Client Success & Support",
+    proficiency: 98,
+    maxProficiency: 100
   }, {
     icon: Users,
     label: "Collaboration",
     description: "Team Leadership",
-    proficiency: 4,
-    maxProficiency: 5
+    proficiency: 88,
+    maxProficiency: 100
   }];
 
   const experience = [
@@ -180,60 +180,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-6 relative z-10">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-on-scroll">
-              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
-                About Me
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                I'm a dedicated AWS cloud professional with a strong background in cybersecurity, 
-                technical support, and systems architecture. My passion lies in building secure, 
-                scalable cloud solutions that drive business success.
-              </p>
-              <p className="text-lg text-muted-foreground mb-6">
-                With expertise in AWS services, compliance frameworks, and customer-focused support, 
-                I bring both technical depth and business acumen to every project. I thrive in 
-                collaborative environments where innovation meets reliability.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">AWS Cloud Practitioner</Badge>
-                <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">CISA</Badge>
-                <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">Cloud Architecture</Badge>
-              </div>
-            </div>
-            <div className="animate-on-scroll">
-              <Card className="bg-card/50 backdrop-blur-sm border-border p-8">
-                <div className="grid grid-cols-2 gap-6 text-center">
-                  <div>
-                    <Server className="w-8 h-8 text-accent mx-auto mb-2" />
-                    <p className="font-semibold">4+ Years</p>
-                    <p className="text-sm text-muted-foreground">Cyber Security</p>
-                  </div>
-                  <div>
-                    <Cloud className="w-8 h-8 text-accent mx-auto mb-2" />
-                    <p className="font-semibold">AWS</p>
-                    <p className="text-sm text-muted-foreground">Cloud Practicioner</p>
-                  </div>
-                  <div>
-                    <Shield className="w-8 h-8 text-accent mx-auto mb-2" />
-                    <p className="font-semibold">CISA</p>
-                    <p className="text-sm text-muted-foreground">Certified</p>
-                  </div>
-                  <div>
-                    <Award className="w-8 h-8 text-accent mx-auto mb-2" />
-                    <p className="font-semibold">Excellence</p>
-                    <p className="text-sm text-muted-foreground">Driven</p>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Resume Section */}
       <section id="resume" className="py-20 px-6 relative z-10">
         <div className="container mx-auto max-w-4xl">
@@ -310,6 +256,60 @@ const Index = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 relative z-10">
+        <div className="container mx-auto max-w-4xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="animate-on-scroll">
+              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
+                About Me
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                I'm a dedicated AWS cloud professional with a strong background in cybersecurity,
+                technical support, and systems architecture. My passion lies in building secure,
+                scalable cloud solutions that drive business success.
+              </p>
+              <p className="text-lg text-muted-foreground mb-6">
+                With expertise in AWS services, compliance frameworks, and customer-focused support,
+                I bring both technical depth and business acumen to every project. I thrive in
+                collaborative environments where innovation meets reliability.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">AWS Cloud Practitioner</Badge>
+                <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">CISA</Badge>
+                <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">Cloud Architecture</Badge>
+              </div>
+            </div>
+            <div className="animate-on-scroll">
+              <Card className="bg-card/50 backdrop-blur-sm border-border p-8">
+                <div className="grid grid-cols-2 gap-6 text-center">
+                  <div>
+                    <Server className="w-8 h-8 text-accent mx-auto mb-2" />
+                    <p className="font-semibold">4+ Years</p>
+                    <p className="text-sm text-muted-foreground">Cyber Security</p>
+                  </div>
+                  <div>
+                    <Cloud className="w-8 h-8 text-accent mx-auto mb-2" />
+                    <p className="font-semibold">AWS</p>
+                    <p className="text-sm text-muted-foreground">Cloud Practicioner</p>
+                  </div>
+                  <div>
+                    <Shield className="w-8 h-8 text-accent mx-auto mb-2" />
+                    <p className="font-semibold">CISA</p>
+                    <p className="text-sm text-muted-foreground">Certified</p>
+                  </div>
+                  <div>
+                    <Award className="w-8 h-8 text-accent mx-auto mb-2" />
+                    <p className="font-semibold">Excellence</p>
+                    <p className="text-sm text-muted-foreground">Driven</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
