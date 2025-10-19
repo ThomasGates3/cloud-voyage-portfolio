@@ -32,14 +32,13 @@ const Index = () => {
     title: "Sam's Suit Shop - Highly Available Containerized Application",
     description: "Production-grade e-commerce platform with containerized microservices architecture, load balancing, and high availability across multiple availability zones.",
     technologies: ["Docker", "AWS ECS", "AWS CloudFront", "Load Balancer", "PostgreSQL", "AWS VPC", "CI/CD"],
-    githubUrl: "https://github.com/ThomasGates3/Sams-Suit-Shop",
-    liveUrl: "https://github.com/ThomasGates3/Sams-Suit-Shop"
+    githubUrl: "https://github.com/ThomasGates3/Sams-Suit-Shop"
   }, {
     title: "SpeakEasy TTS - AI Text to Speech Application",
     description: "Intelligent text-to-speech system leveraging generative AI and neural networks to produce natural, human-like audio output with multi-language support.",
     technologies: ["Python", "TensorFlow", "AWS Polly", "FastAPI", "React", "WebRTC", "Machine Learning"],
     githubUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS",
-    liveUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS"
+    liveUrl: "http://speakeasy-website.s3-website.us-east-2.amazonaws.com"
   }, {
     title: "Cloud Voyage Portfolio",
     description: "Modern, space-themed portfolio website showcasing AWS cloud expertise, projects, and skills with interactive animations, automated deployment, and responsive design.",
