@@ -41,16 +41,16 @@ const Index = () => {
     githubUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS",
     liveUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS"
   }, {
-    title: "Project V - Cloud Infrastructure Automation",
-    description: "Enterprise-grade infrastructure automation platform with infrastructure-as-code, automated deployment pipelines, and compliance monitoring.",
-    technologies: ["Terraform", "AWS CloudFormation", "Python", "Bash", "GitHub Actions", "CloudWatch", "Security Hub"],
-    githubUrl: "https://github.com/ThomasGates3/Project-V",
-    liveUrl: "https://github.com/ThomasGates3/Project-V"
+    title: "Cloud Voyage Portfolio",
+    description: "Modern, space-themed portfolio website showcasing AWS cloud expertise, projects, and skills with interactive animations, automated deployment, and responsive design.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "AWS S3", "CloudFront", "Terraform", "GitHub Actions"],
+    githubUrl: "https://github.com/ThomasGates3/cloud-voyage-portfolio",
+    liveUrl: "https://d1txardbv3hmir.cloudfront.net/"
   }, {
-    title: "Cloud Security & Compliance",
-    description: "Implemented comprehensive security controls and compliance monitoring across AWS infrastructure, achieving NIST, FISMA, and FedRAMP standards.",
-    technologies: ["AWS IAM", "CloudTrail", "Config", "GuardDuty", "Security Hub", "NIST Framework", "Python Automation"],
-    githubUrl: "https://github.com/ThomasGates3"
+    title: "Bullcycle Binoculars - Crypto Price Tracker",
+    description: "Real-time cryptocurrency price tracker displaying live market data for BTC, SOL, SUI, and HYPE. Static S3-hosted website with instant price updates and clean UI.",
+    technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "S3 Website Hosting", "Crypto API"],
+    liveUrl: "http://my-crypto-tracker-website-2025.s3-website.us-east-2.amazonaws.com"
   }];
   const certifications = [
     {
