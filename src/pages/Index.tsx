@@ -49,7 +49,8 @@ const Index = () => {
     title: "Bullcycle Binoculars - Crypto Price Tracker",
     description: "Real-time cryptocurrency price tracker displaying live market data for BTC, SOL, SUI, and HYPE. Static S3-hosted website with instant price updates and clean UI.",
     technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "S3 Website Hosting", "Crypto API"],
-    liveUrl: "http://my-crypto-tracker-website-2025.s3-website.us-east-2.amazonaws.com"
+    githubUrl: "https://github.com/ThomasGates3/Bullcycle-Binoculars",
+    liveUrl: "http://bullcycle-binoculars-049475639513.s3-website-us-east-1.amazonaws.com/"
   }];
   const certifications = [
     {
