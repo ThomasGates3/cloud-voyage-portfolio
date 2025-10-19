@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Cloud, Shield, Network, Headphones, Users, Download, Zap } from "lucide-react";
@@ -40,9 +39,9 @@ const Index = () => {
     githubUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS",
     liveUrl: "http://speakeasy-website.s3-website.us-east-2.amazonaws.com"
   }, {
-    title: "Cloud Voyage Portfolio",
-    description: "Modern, space-themed portfolio website showcasing AWS cloud expertise, projects, and skills with interactive animations, automated deployment, and responsive design.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "AWS S3", "CloudFront", "Terraform", "GitHub Actions"],
+    title: "Cloud Engineer Portfolio",
+    description: "Modern, space-themed portfolio website showcasing AWS cloud expertise, projects, and skills with interactive animations and responsive design. Implemented a CI/CD pipeline using GitHub Actions that automatically deploys to AWS S3 and invalidates CloudFront cache with every push to main branch.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "AWS S3", "CloudFront", "Terraform", "GitHub Actions", "CI/CD"],
     githubUrl: "https://github.com/ThomasGates3/cloud-voyage-portfolio",
     liveUrl: "https://d1txardbv3hmir.cloudfront.net/"
   }, {
