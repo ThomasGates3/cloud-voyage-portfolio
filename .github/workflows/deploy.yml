@@ -61,24 +61,21 @@ jobs:
 
       - name: Deploy to S3
         run: |
+          # Deploy everything to S3 with smart caching
           aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET_NAME }}/ \
-            --delete \
-            --cache-control "public, max-age=3600" \
-            --exclude "*.js" --exclude "*.css" \
-            --exclude "*.jpg" --exclude "*.jpeg" --exclude "*.png" --exclude "*.gif" \
-            --exclude "*.svg" --exclude "*.pdf"
-
-          # Deploy static assets with longer cache
-          aws s3 sync dist/assets/ s3://${{ secrets.AWS_S3_BUCKET_NAME }}/assets/ \
-            --cache-control "public, max-age=31536000" \
             --delete
 
-          # Deploy index.html with short cache
+          # Update index.html with short cache (5 minutes)
           aws s3 cp dist/index.html s3://${{ secrets.AWS_S3_BUCKET_NAME }}/index.html \
             --cache-control "public, max-age=300" \
             --content-type "text/html"
 
-          # Deploy resume.pdf if it exists
+          # Update assets with long cache (1 year)
+          aws s3 cp dist/assets/ s3://${{ secrets.AWS_S3_BUCKET_NAME }}/assets/ \
+            --recursive \
+            --cache-control "public, max-age=31536000"
+
+          # Deploy resume.pdf if it exists with 1 day cache
           if [ -f dist/resume.pdf ]; then
             aws s3 cp dist/resume.pdf s3://${{ secrets.AWS_S3_BUCKET_NAME }}/resume.pdf \
               --cache-control "public, max-age=86400"
