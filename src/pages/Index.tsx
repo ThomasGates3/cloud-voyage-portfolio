@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Cloud, Shield, Network, CheckCircle, Headphones, Users, Download, Award, Server, Database, Lock, Globe, Github, ExternalLink, Zap } from "lucide-react";
+import { Cloud, Shield, Network, Headphones, Users, Download, Zap } from "lucide-react";
 import Starfield from "@/components/Starfield";
 import Navigation from "@/components/Navigation";
 import ProjectCard from "@/components/ProjectCard";
-import SkillIcon from "@/components/SkillIcon";
 import ContactForm from "@/components/ContactForm";
 import PokemonHPBar from "@/components/PokemonHPBar";
 import CertificationCard from "@/components/CertificationCard";
+import CursorGlow from "@/components/CursorGlow";
 import spaceHero from "@/assets/space-hero.jpg";
 const Index = () => {
   useEffect(() => {
@@ -36,7 +36,7 @@ const Index = () => {
   }, {
     title: "SpeakEasy TTS - AI Text to Speech Application",
     description: "Intelligent text-to-speech system leveraging generative AI and neural networks to produce natural, human-like audio output with multi-language support.",
-    technologies: ["Python", "TensorFlow", "AWS Polly", "FastAPI", "React", "WebRTC", "Machine Learning"],
+    technologies: ["Python", "TensorFlow", "AWS Polly", "FastAPI", "React", "WebRTC", "Machine Learning", "CloudFront"],
     githubUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS",
     liveUrl: "http://speakeasy-website.s3-website.us-east-2.amazonaws.com"
   }, {
@@ -48,7 +48,7 @@ const Index = () => {
   }, {
     title: "Bullcycle Binoculars - Crypto Price Tracker",
     description: "Real-time cryptocurrency price tracker displaying live market data for BTC, SOL, SUI, and HYPE. Static S3-hosted website with instant price updates and clean UI.",
-    technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "S3 Website Hosting", "Crypto API"],
+    technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "CloudFront", "S3 Website Hosting", "Crypto API"],
     githubUrl: "https://github.com/ThomasGates3/Bullcycle-Binoculars",
     liveUrl: "http://bullcycle-binoculars-049475639513.s3-website-us-east-1.amazonaws.com/"
   }];
@@ -174,6 +174,7 @@ const Index = () => {
     }
   ];
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <CursorGlow />
       <Starfield />
       <Navigation />
       
