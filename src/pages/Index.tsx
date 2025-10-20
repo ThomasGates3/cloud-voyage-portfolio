@@ -45,9 +45,9 @@ const Index = () => {
     githubUrl: "https://github.com/ThomasGates3/cloud-voyage-portfolio",
     liveUrl: "https://d1txardbv3hmir.cloudfront.net/"
   }, {
-    title: "Bullcycle Binoculars - Crypto Price Tracker",
-    description: "Real-time cryptocurrency price tracker displaying live market data for BTC, SOL, SUI, and HYPE. Static S3-hosted website with instant price updates and clean UI.",
-    technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "CloudFront", "S3 Website Hosting", "Crypto API"],
+    title: "Bullcycle Binoculars - Crypto Price Tracker with AI News Analysis",
+    description: "Real-time cryptocurrency price tracker with AI-powered news sentiment analysis. Displays live market data for BTC, ETH, SOL, HYPE. Serverless Lambda microservice enriches 10 crypto news articles with Claude 3 Haiku sentiment analysis (Bullish 🐂, Bearish 🐻, Neutral ⚪). Features 15-minute DynamoDB caching and interactive sentiment filtering. Production-grade infrastructure using Terraform.",
+    technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "AWS Lambda", "AWS API Gateway", "AWS DynamoDB", "AWS Bedrock", "AWS Terraform", "Node.js", "TypeScript", "NewsData.io API", "Crypto API", "CORS", "Sentiment Analysis"],
     githubUrl: "https://github.com/ThomasGates3/Bullcycle-Binoculars",
     liveUrl: "http://bullcycle-binoculars-049475639513.s3-website-us-east-1.amazonaws.com/"
   }];
