@@ -28,6 +28,12 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
   const projects = [{
+    title: "Bullcycle Binoculars - Crypto Price Tracker with AI News Analysis",
+    description: "Real-time cryptocurrency price tracker with AI-powered news sentiment analysis. Displays live market data for BTC, ETH, SOL, HYPE. Serverless Lambda microservice enriches 10 crypto news articles with Claude 3 Haiku sentiment analysis (Bullish 🐂, Bearish 🐻, Neutral ⚪). Features 15-minute DynamoDB caching and interactive sentiment filtering. Production-grade infrastructure using Terraform.",
+    technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "AWS Lambda", "AWS API Gateway", "AWS DynamoDB", "AWS Bedrock", "AWS Terraform", "Node.js", "TypeScript", "NewsData.io API", "Crypto API", "CORS", "Sentiment Analysis"],
+    githubUrl: "https://github.com/ThomasGates3/Bullcycle-Binoculars",
+    liveUrl: "http://bullcycle-binoculars-049475639513.s3-website-us-east-1.amazonaws.com/"
+  }, {
     title: "Sam's Suit Shop - Highly Available Containerized Application",
     description: "Production-grade e-commerce platform with containerized microservices architecture, load balancing, and high availability across multiple availability zones.",
     technologies: ["Docker", "AWS ECS", "AWS CloudFront", "Load Balancer", "PostgreSQL", "AWS VPC", "CI/CD"],
@@ -36,20 +42,13 @@ const Index = () => {
     title: "SpeakEasy TTS - AI Text to Speech Application",
     description: "Intelligent text-to-speech system leveraging generative AI and neural networks to produce natural, human-like audio output with multi-language support.",
     technologies: ["Python", "TensorFlow", "AWS Polly", "FastAPI", "React", "WebRTC", "Machine Learning", "CloudFront"],
-    githubUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS",
-    liveUrl: "http://speakeasy-website.s3-website.us-east-2.amazonaws.com"
+    githubUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS"
   }, {
     title: "Cloud Engineer Portfolio",
     description: "Modern, space-themed portfolio website showcasing AWS cloud expertise, projects, and skills with interactive animations and responsive design. Implemented a CI/CD pipeline using GitHub Actions that automatically deploys to AWS S3 and invalidates CloudFront cache with every push to main branch.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "AWS S3", "CloudFront", "Terraform", "GitHub Actions", "CI/CD"],
     githubUrl: "https://github.com/ThomasGates3/cloud-voyage-portfolio",
     liveUrl: "https://d1txardbv3hmir.cloudfront.net/"
-  }, {
-    title: "Bullcycle Binoculars - Crypto Price Tracker with AI News Analysis",
-    description: "Real-time cryptocurrency price tracker with AI-powered news sentiment analysis. Displays live market data for BTC, ETH, SOL, HYPE. Serverless Lambda microservice enriches 10 crypto news articles with Claude 3 Haiku sentiment analysis (Bullish 🐂, Bearish 🐻, Neutral ⚪). Features 15-minute DynamoDB caching and interactive sentiment filtering. Production-grade infrastructure using Terraform.",
-    technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "AWS Lambda", "AWS API Gateway", "AWS DynamoDB", "AWS Bedrock", "AWS Terraform", "Node.js", "TypeScript", "NewsData.io API", "Crypto API", "CORS", "Sentiment Analysis"],
-    githubUrl: "https://github.com/ThomasGates3/Bullcycle-Binoculars",
-    liveUrl: "http://bullcycle-binoculars-049475639513.s3-website-us-east-1.amazonaws.com/"
   }];
   const certifications = [
     {
