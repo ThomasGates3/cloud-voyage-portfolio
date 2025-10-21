@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { Github, ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
@@ -80,30 +81,25 @@ const ProjectCard = ({ title, description, technologies, githubUrl, liveUrl, ima
         </div>
         <div className="flex gap-2">
           {githubUrl && (
-            <Button
-              size="sm"
-              variant="outline"
-              className="border-accent/50 text-accent hover:bg-accent hover:text-accent-foreground"
+            <GradientButton
               asChild
             >
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                 <Github className="w-4 h-4 mr-2" />
                 Code
               </a>
-            </Button>
+            </GradientButton>
           )}
           {liveUrl && (
-            <Button
-              size="sm"
-              variant="outline"
-              className="border-accent/50 text-accent hover:bg-accent hover:text-accent-foreground"
+            <GradientButton
+              variant="variant"
               asChild
             >
               <a href={liveUrl} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Live Demo
               </a>
-            </Button>
+            </GradientButton>
           )}
         </div>
       </CardContent>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { Badge } from "@/components/ui/badge";
 import { Cloud, Shield, Network, Headphones, Users, Download, Zap } from "lucide-react";
 import Starfield from "@/components/Starfield";
@@ -192,16 +193,16 @@ const Index = () => {
             AWS Cloud Professional specializing in secure, scalable infrastructure and cybersecurity solutions
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="glow-hover bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => document.getElementById('projects')?.scrollIntoView({
+            <GradientButton onClick={() => document.getElementById('projects')?.scrollIntoView({
             behavior: 'smooth'
           })}>
               View My Work
-            </Button>
-            <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground glow-hover" onClick={() => document.getElementById('contact')?.scrollIntoView({
+            </GradientButton>
+            <GradientButton variant="variant" onClick={() => document.getElementById('contact')?.scrollIntoView({
             behavior: 'smooth'
           })}>
               Get In Touch
-            </Button>
+            </GradientButton>
           </div>
         </div>
       </section>
@@ -237,14 +238,12 @@ const Index = () => {
                 Access my complete resume to learn more about my professional experience,
                 certifications, technical achievements, and qualifications.
               </p>
-              <Button
-                size="lg"
-                className="glow-hover bg-accent text-accent-foreground hover:bg-accent/90"
+              <GradientButton
                 onClick={() => window.open('/resume.pdf', '_blank')}
               >
                 <Download className="w-5 h-5 mr-2" />
                 Download Resume
-              </Button>
+              </GradientButton>
             </div>
 
             <div className="animate-on-scroll">
