@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { GradientButton } from "@/components/ui/gradient-button";
+import { StarBorder } from "@/components/ui/star-border";
 import { Badge } from "@/components/ui/badge";
 import { Cloud, Shield, Network, Headphones, Users, Download, Zap } from "lucide-react";
 import Starfield from "@/components/Starfield";
@@ -193,16 +194,20 @@ const Index = () => {
             AWS Cloud Professional specializing in secure, scalable infrastructure and cybersecurity solutions
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <GradientButton onClick={() => document.getElementById('projects')?.scrollIntoView({
-            behavior: 'smooth'
-          })}>
-              View My Work
-            </GradientButton>
-            <GradientButton variant="variant" onClick={() => document.getElementById('contact')?.scrollIntoView({
-            behavior: 'smooth'
-          })}>
-              Get In Touch
-            </GradientButton>
+            <StarBorder as="div">
+              <GradientButton onClick={() => document.getElementById('projects')?.scrollIntoView({
+              behavior: 'smooth'
+            })} className="w-full">
+                View My Work
+              </GradientButton>
+            </StarBorder>
+            <StarBorder as="div">
+              <GradientButton variant="variant" onClick={() => document.getElementById('contact')?.scrollIntoView({
+              behavior: 'smooth'
+            })} className="w-full">
+                Get In Touch
+              </GradientButton>
+            </StarBorder>
           </div>
         </div>
       </section>
