@@ -37,7 +37,7 @@ const Index = () => {
     title: "IAM Policy Generator - AI-Powered AWS Policy Creation",
     description: "Serverless application that leverages Claude 3.5 Haiku to automatically generate least-privilege AWS IAM policies from plain English descriptions. Features real-time policy generation with AWS Lambda backend, responsive React frontend with Tailwind CSS, and seamless API Gateway integration for instant policy suggestions.",
     technologies: ["ReactJS", "Tailwind CSS", "Claude", "Generative AI", "AWS Lambda", "AWS S3", "AWS IAM", "API Gateway"],
-    githubUrl: "https://github.com/ThomasGates3/cloud-voyage-portfolio",
+    githubUrl: "https://github.com/ThomasGates3/ai-powered-iam",
     liveUrl: "http://iam-policy-gen-website-049475639513-prod.s3-website-us-east-1.amazonaws.com/"
   }, {
     title: "Sam's Suit Shop - Highly Available Containerized Application",
