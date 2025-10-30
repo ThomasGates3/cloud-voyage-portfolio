@@ -28,17 +28,23 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
   const projects = [{
+    title: "IAM Policy Generator - AI-Powered AWS Policy Creation",
+    description: "Serverless application that leverages Claude 3.5 Haiku to automatically generate least-privilege AWS IAM policies from plain English descriptions. Features real-time policy generation with AWS Lambda backend, responsive React frontend with Tailwind CSS, and seamless API Gateway integration for instant policy suggestions.",
+    technologies: ["ReactJS", "Tailwind CSS", "Claude", "Generative AI", "AWS Lambda", "AWS S3", "AWS IAM", "API Gateway"],
+    githubUrl: "https://github.com/ThomasGates3/ai-powered-iam",
+    liveUrl: "http://iam-policy-gen-website-049475639513-prod.s3-website-us-east-1.amazonaws.com/"
+  }, {
     title: "Bullcycle Binoculars - Crypto Price Tracker with AI News Analysis",
     description: "Real-time cryptocurrency price tracker with AI-powered news sentiment analysis. Displays live market data for BTC, ETH, SOL, HYPE. Serverless Lambda microservice enriches 10 crypto news articles with Claude 3 Haiku sentiment analysis (Bullish 🐂, Bearish 🐻, Neutral ⚪). Features 15-minute DynamoDB caching and interactive sentiment filtering. Production-grade infrastructure using Terraform.",
     technologies: ["HTML", "CSS", "JavaScript", "AWS S3", "AWS Lambda", "AWS API Gateway", "AWS DynamoDB", "AWS Bedrock", "AWS Terraform", "Node.js", "TypeScript"],
     githubUrl: "https://github.com/ThomasGates3/Bullcycle-Binoculars",
     liveUrl: "http://bullcycle-binoculars-049475639513.s3-website-us-east-1.amazonaws.com/"
   }, {
-    title: "IAM Policy Generator - AI-Powered AWS Policy Creation",
-    description: "Serverless application that leverages Claude 3.5 Haiku to automatically generate least-privilege AWS IAM policies from plain English descriptions. Features real-time policy generation with AWS Lambda backend, responsive React frontend with Tailwind CSS, and seamless API Gateway integration for instant policy suggestions.",
-    technologies: ["ReactJS", "Tailwind CSS", "Claude", "Generative AI", "AWS Lambda", "AWS S3", "AWS IAM", "API Gateway"],
-    githubUrl: "https://github.com/ThomasGates3/ai-powered-iam",
-    liveUrl: "http://iam-policy-gen-website-049475639513-prod.s3-website-us-east-1.amazonaws.com/"
+    title: "Natural Remedies AI - AI-Powered Wellness Discovery",
+    description: "Intelligent platform for discovering and evaluating natural health remedies. Features AI-powered symptom-based recommendations, structured remedy information with preparation guides and safety precautions, side-by-side comparisons, search history tracking, and favorites system. Built with React 19, TypeScript, and Tailwind CSS with Cloud Run deployment on Google Cloud.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Google Cloud Run", "Google Cloud Storage", "Gemini API", "Docker"],
+    githubUrl: "https://github.com/ThomasGates3/natural-remedies-ai/actions/workflows/deploy.yml",
+    liveUrl: "https://natural-remedies-ai-frontend-dev-807828955289.storage.googleapis.com/index.html"
   }, {
     title: "Sam's Suit Shop - Highly Available Containerized Application",
     description: "Production-grade e-commerce platform with containerized microservices architecture, load balancing, and high availability across multiple availability zones.",
