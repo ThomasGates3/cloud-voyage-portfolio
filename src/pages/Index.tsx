@@ -40,7 +40,7 @@ const Index = () => {
     githubUrl: "https://github.com/ThomasGates3/Bullcycle-Binoculars",
     liveUrl: "http://bullcycle-binoculars-049475639513.s3-website-us-east-1.amazonaws.com/"
   }, {
-    title: "Natural Remedies AI - AI-Powered Wellness Discovery",
+    title: "Natural Remedies - AI-Powered Wellness Discovery",
     description: "Intelligent platform for discovering and evaluating natural health remedies. Features AI-powered symptom-based recommendations, structured remedy information with preparation guides and safety precautions, side-by-side comparisons, search history tracking, and favorites system. Built with React 19, TypeScript, and Tailwind CSS with Cloud Run deployment on Google Cloud.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Google Cloud Run", "Google Cloud Storage", "Gemini API", "Docker"],
     githubUrl: "https://github.com/ThomasGates3/natural-remedies-ai/actions/workflows/deploy.yml",
