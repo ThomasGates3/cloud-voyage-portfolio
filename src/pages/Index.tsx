@@ -9,6 +9,7 @@ import ContactForm from "@/components/ContactForm";
 import PokemonHPBar from "@/components/PokemonHPBar";
 import CertificationCard from "@/components/CertificationCard";
 import CursorGlow from "@/components/CursorGlow";
+import { AIToolCard } from "@/components/AIToolCard";
 import spaceHero from "@/assets/space-hero.jpg";
 const Index = () => {
   useEffect(() => {
@@ -359,21 +360,18 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-5 gap-8">
             {[
-              { name: "Google AI Studio", description: "Gemini API integration for AI-powered features" },
-              { name: "Claude Code", description: "AI-assisted development and code generation" },
-              { name: "Stitch", description: "Data pipeline and integration framework" },
-              { name: "Gemini", description: "Advanced language model for recommendations and analysis" },
-              { name: "AWS Bedrock", description: "Managed generative AI service on AWS" }
+              { name: "Google AI Studio", description: "Gemini API integration for AI-powered features", logo: "/logos/googleaistudio.svg" },
+              { name: "Claude Code", description: "AI-assisted development and code generation", logo: "/logos/claude.svg" },
+              { name: "OpenRouter", description: "Unified API for integrating multiple LLMs into applications", logo: "/logos/openrouter.svg" },
+              { name: "Gemini", description: "Advanced language model for recommendations and analysis", logo: "/logos/gemini.svg" },
+              { name: "AWS Bedrock", description: "Managed generative AI service on AWS", logo: "/logos/bedrock.svg" }
             ].map((tool, index) => (
               <div key={index} className="animate-on-scroll">
-                <div className="p-6 rounded-lg border border-accent/20 bg-card hover:border-accent/50 hover:bg-card/50 transition-all duration-300 h-full flex flex-col justify-center text-center group">
-                  <h3 className="font-heading font-semibold text-lg mb-2 group-hover:text-accent transition-colors">
-                    {tool.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {tool.description}
-                  </p>
-                </div>
+                <AIToolCard
+                  name={tool.name}
+                  description={tool.description}
+                  logoPath={tool.logo}
+                />
               </div>
             ))}
           </div>
