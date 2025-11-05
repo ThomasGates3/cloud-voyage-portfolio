@@ -11,15 +11,16 @@ export function AIToolCard({ name, description, logoPath }: AIToolCardProps) {
     <motion.div
       className="h-full"
       whileHover={{ scale: 1 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.15 }}
     >
       <motion.div
-        className="p-10 rounded-lg border border-accent/20 bg-card h-full flex flex-col items-center justify-center text-center transition-all duration-300"
+        className="p-10 rounded-lg border border-accent/20 bg-card h-full flex flex-col items-center justify-center text-center transition-all duration-150"
         whileHover={{
           scale: 1.15,
           boxShadow: "0 0 30px rgba(255, 140, 0, 0.5), 0 0 60px rgba(255, 100, 0, 0.3)",
           borderColor: "rgba(255, 140, 0, 0.6)",
         }}
+        transition={{ duration: 0.15 }}
       >
         {/* Logo Container */}
         <div className="mb-6 h-40 w-40 flex items-center justify-center">
@@ -27,7 +28,7 @@ export function AIToolCard({ name, description, logoPath }: AIToolCardProps) {
             src={logoPath}
             alt={name}
             className="max-h-40 max-w-40 object-contain"
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.15 }}
           />
         </div>
 
