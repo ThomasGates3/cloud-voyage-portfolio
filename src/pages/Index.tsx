@@ -30,7 +30,7 @@ const Index = () => {
   }, []);
   const projects = [{
     title: "IAM Policy Generator - AI-Powered AWS Policy Creation",
-    description: "Serverless application that leverages Claude 3.5 Haiku to automatically generate least-privilege AWS IAM policies from plain English descriptions. Features real-time policy generation with AWS Lambda backend, responsive React frontend with Tailwind CSS, and seamless API Gateway integration for instant policy suggestions.",
+    description: "Serverless application leveraging Claude 3.5 Haiku to automate least-privilege IAM role management. Generates production-ready AWS IAM policies from plain English descriptions, eliminating manual role creation and policy design. Features real-time generation with AWS Lambda, responsive React frontend, and API Gateway integration for instant policy suggestions.",
     technologies: ["ReactJS", "Tailwind CSS", "Claude", "Generative AI", "AWS Lambda", "AWS S3", "AWS IAM", "API Gateway"],
     githubUrl: "https://github.com/ThomasGates3/ai-powered-iam",
     liveUrl: "http://iam-policy-gen-website-049475639513-prod.s3-website-us-east-1.amazonaws.com/"
@@ -82,37 +82,37 @@ const Index = () => {
   ];
 
   const skillTools = {
-    "Generative AI": ["Google AI Studio", "Claude Code", "Stitch", "Gemini", "AWS Bedrock"],
-    "Cybersecurity": ["Nessus", "Splunk", "AWS Security Hub", "AWS GuardDuty", "AWS Config"],
-    "Cloud Concepts": ["Compute", "Storage", "Networking", "Security"],
-    "Front End Development": ["HTML", "CSS", "React", "TypeScript", "Tailwind CSS"],
-    "Customer Service": ["Empathetic", "Solution-Oriented", "De-escalation", "ARM Statements"],
-    "Collaboration": ["Cross-Functional Collaboration", "Mentorship", "Leading by Example"]
+    "Generative AI": ["Claude API", "Gemini", "AWS Bedrock", "Prompt Engineering", "LLM Integration"],
+    "Multi-Cloud Engineering": ["AWS", "Google Cloud", "Terraform", "Infrastructure as Code", "Multi-cloud Architecture"],
+    "Cybersecurity & Compliance": ["Security Audits", "CISA", "AWS Security Hub", "GuardDuty", "IAM Policy Design"],
+    "Front End Development": ["React", "TypeScript", "Tailwind CSS", "HTML", "CSS"],
+    "Customer Service": ["Technical Support", "Empathetic Communication", "Problem-Solving", "Service Excellence"],
+    "Collaboration": ["Cross-Functional Teams", "Mentorship", "Knowledge Sharing"]
   };
 
   const skills = [{
     icon: Zap,
     label: "Generative AI",
     skillName: "Generative AI",
-    description: "AI/ML & LLM Integration",
+    description: "LLM Integration & Deployment",
     proficiency: 93,
     maxProficiency: 100,
     grade: "A",
     masteredLabel: "PROFICIENT"
   }, {
     icon: Cloud,
-    label: "Cloud Concepts",
-    skillName: "Cloud Concepts",
-    description: "AWS Solutions Architecture",
+    label: "Multi-Cloud Engineering",
+    skillName: "Multi-Cloud Engineering",
+    description: "AWS & Google Cloud Architecture",
     proficiency: 87,
     maxProficiency: 100,
     grade: "A-",
     masteredLabel: "PROFICIENT"
   }, {
     icon: Shield,
-    label: "Cybersecurity",
-    skillName: "Cybersecurity",
-    description: "Security & Compliance",
+    label: "Cybersecurity & Compliance",
+    skillName: "Cybersecurity & Compliance",
+    description: "Security Audits & IAM Design",
     proficiency: 82,
     maxProficiency: 100,
     grade: "B+",
@@ -130,7 +130,7 @@ const Index = () => {
     icon: Headphones,
     label: "Customer Service",
     skillName: "Customer Service",
-    description: "Client Success & Support",
+    description: "Technical Support & Solutions",
     proficiency: 98,
     maxProficiency: 100,
     grade: "A+",
@@ -139,7 +139,7 @@ const Index = () => {
     icon: Users,
     label: "Collaboration",
     skillName: "Collaboration",
-    description: "Team Leadership",
+    description: "Team Leadership & Mentoring",
     proficiency: 88,
     maxProficiency: 100,
     grade: "B",
@@ -202,7 +202,7 @@ const Index = () => {
             Thomas Gates III
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            AWS Cloud & AI Engineer specializing in intelligent infrastructure, secure systems, and generative AI solutions
+            Multi-Cloud AI Solutions Engineer deploying intelligent, secure infrastructure across AWS and Google Cloud
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="glow-hover bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => document.getElementById('projects')?.scrollIntoView({
@@ -387,15 +387,15 @@ const Index = () => {
                 About Me
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                I'm a dedicated AWS Cloud & AI Engineer with a strong background in cybersecurity,
-                technical support, and intelligent systems architecture. My passion lies in building
-                secure, scalable cloud solutions enhanced with generative AI to drive business success.
+                I'm a Multi-Cloud AI Solutions Engineer with 4+ years building intelligent systems across AWS and Google Cloud.
+                I architect and deploy generative AI solutions (Claude, Gemini, AWS Bedrock), design secure cloud infrastructure
+                with automated IAM policies, and conduct comprehensive security audits. From API integration to production deployment,
+                I bridge infrastructure and intelligent applications.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                With expertise in AWS services, generative AI integration, compliance frameworks, and
-                customer-focused support, I bring both technical depth and strategic thinking to every
-                project. I thrive in collaborative environments where innovation meets reliability,
-                leveraging AI tools to accelerate development and solve complex problems.
+                With expertise in multi-cloud architecture, generative AI integration, security compliance, and technical depth,
+                I deliver solutions that scale. I thrive in collaborative environments where innovation meets reliability,
+                deploying production systems and solving complex problems across cloud platforms.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">AWS Cloud Practitioner</Badge>
