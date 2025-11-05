@@ -29,3 +29,9 @@ terraform/.terraform.lock.hcl
 terraform/terraform.tfvars
 terraform/terraform.tfstate*
 .deploy-config
+
+# Audit Documentation
+RECRUITER_AUDIT.md
+AUDIT_SUMMARY.txt
+AUDIT_QUICK_REFERENCE.md
+AUDIT_README.md
