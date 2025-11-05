@@ -17,8 +17,8 @@ export function AIToolCard({ name, description, logoPath }: AIToolCardProps) {
         className="p-10 rounded-lg border border-accent/20 bg-card h-full flex flex-col items-center justify-center text-center transition-all duration-300"
         whileHover={{
           scale: 1.15,
-          boxShadow: "0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3)",
-          borderColor: "rgba(0, 255, 255, 0.6)",
+          boxShadow: "0 0 30px rgba(255, 140, 0, 0.5), 0 0 60px rgba(255, 100, 0, 0.3)",
+          borderColor: "rgba(255, 140, 0, 0.6)",
         }}
       >
         {/* Logo Container */}
@@ -27,7 +27,6 @@ export function AIToolCard({ name, description, logoPath }: AIToolCardProps) {
             src={logoPath}
             alt={name}
             className="max-h-40 max-w-40 object-contain"
-            whileHover={{ rotate: 5 }}
             transition={{ duration: 0.3 }}
           />
         </div>
