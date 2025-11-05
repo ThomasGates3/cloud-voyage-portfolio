@@ -1,10 +1,10 @@
-# Cloud Voyage Portfolio
+# Cloud & AI Voyage Portfolio
 
-A modern, space-themed portfolio website built with React, TypeScript, and Tailwind CSS. Showcase your AWS cloud expertise, projects, and skills with an interactive, responsive design.
+A modern, space-themed portfolio website built with React, TypeScript, and Tailwind CSS. Showcase your AWS cloud and generative AI expertise, projects, and skills with an interactive, responsive design.
 
 ## Project Overview
 
-**Cloud Voyage Portfolio** is a professional portfolio website for cloud engineers and AWS specialists. It features a modern design with smooth animations, responsive layout, and direct contact links to social profiles.
+**Cloud & AI Voyage Portfolio** is a professional portfolio website for cloud engineers and AI engineers who leverage generative AI and AWS cloud services. It features a modern design with smooth animations, responsive layout, and direct contact links to social profiles.
 
 ### Key Features
 
@@ -12,7 +12,8 @@ A modern, space-themed portfolio website built with React, TypeScript, and Tailw
 - 🎨 **Beautiful UI** - Tailwind CSS with custom space-themed design
 - 📱 **Fully Responsive** - Optimized for desktop, tablet, and mobile
 - ✨ **Smooth Animations** - Scroll-triggered fade-in effects and twinkle animations
-- 🔧 **AWS Showcase** - Display AWS projects, technologies, and expertise
+- 🔧 **Cloud & AI Showcase** - Display AWS cloud projects, AI/ML projects, and expertise
+- 🤖 **AI Tools Integration** - Highlight generative AI tools and frameworks used
 - 📧 **Direct Contact Links** - Email, phone, LinkedIn, and GitHub integration
 - ⚡ **Fast Performance** - Optimized builds with Vite and CloudFront CDN
 

@@ -56,8 +56,8 @@ const Index = () => {
     technologies: ["Python", "TensorFlow", "AWS Polly", "FastAPI", "React", "WebRTC", "Machine Learning", "CloudFront"],
     githubUrl: "https://github.com/ThomasGates3/SpeakEasy-TTS"
   }, {
-    title: "Cloud Engineer Portfolio",
-    description: "Modern, space-themed portfolio website showcasing AWS cloud expertise, projects, and skills with interactive animations and responsive design. Implemented a CI/CD pipeline using GitHub Actions that automatically deploys to AWS S3 and invalidates CloudFront cache with every push to main branch.",
+    title: "Cloud & AI Voyage Portfolio",
+    description: "Modern, space-themed portfolio website showcasing AWS cloud and generative AI expertise, projects, and skills with interactive animations and responsive design. Implemented a fully automated CI/CD pipeline using GitHub Actions that deploys to AWS S3 and invalidates CloudFront cache with every push to main branch.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "AWS S3", "CloudFront", "Terraform", "GitHub Actions", "CI/CD"],
     githubUrl: "https://github.com/ThomasGates3/cloud-voyage-portfolio",
     liveUrl: "https://d1txardbv3hmir.cloudfront.net/"
@@ -81,22 +81,22 @@ const Index = () => {
   ];
 
   const skillTools = {
+    "Generative AI": ["Google AI Studio", "Claude Code", "Stitch", "Gemini", "AWS Bedrock"],
     "Cybersecurity": ["Nessus", "Splunk", "AWS Security Hub", "AWS GuardDuty", "AWS Config"],
     "Cloud Concepts": ["Compute", "Storage", "Networking", "Security"],
-    "Full Stack Development": ["HTML", "CSS", "React", "Python", "Ruby"],
-    "Generative AI": ["Claude", "ChatGPT", "Google AI Studio", "n8n"],
+    "Front End Development": ["HTML", "CSS", "React", "TypeScript", "Tailwind CSS"],
     "Customer Service": ["Empathetic", "Solution-Oriented", "De-escalation", "ARM Statements"],
     "Collaboration": ["Cross-Functional Collaboration", "Mentorship", "Leading by Example"]
   };
 
   const skills = [{
-    icon: Shield,
-    label: "Cybersecurity",
-    skillName: "Cybersecurity",
-    description: "Security & Compliance",
-    proficiency: 82,
+    icon: Zap,
+    label: "Generative AI",
+    skillName: "Generative AI",
+    description: "AI/ML & LLM Integration",
+    proficiency: 93,
     maxProficiency: 100,
-    grade: "B+",
+    grade: "A",
     masteredLabel: "PROFICIENT"
   }, {
     icon: Cloud,
@@ -108,22 +108,22 @@ const Index = () => {
     grade: "A-",
     masteredLabel: "PROFICIENT"
   }, {
-    icon: Network,
-    label: "Full Stack Development",
-    skillName: "Full Stack Development",
-    description: "Frontend & Backend Engineering",
-    proficiency: 64,
+    icon: Shield,
+    label: "Cybersecurity",
+    skillName: "Cybersecurity",
+    description: "Security & Compliance",
+    proficiency: 82,
     maxProficiency: 100,
-    grade: "B-",
+    grade: "B+",
     masteredLabel: "PROFICIENT"
   }, {
-    icon: Zap,
-    label: "Generative AI",
-    skillName: "Generative AI",
-    description: "AI/ML & Neural Networks",
-    proficiency: 93,
+    icon: Network,
+    label: "Front End Development",
+    skillName: "Front End Development",
+    description: "React & Modern UI",
+    proficiency: 90,
     maxProficiency: 100,
-    grade: "A",
+    grade: "A-",
     masteredLabel: "PROFICIENT"
   }, {
     icon: Headphones,
@@ -201,7 +201,7 @@ const Index = () => {
             Thomas Gates III
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            AWS Cloud Professional specializing in secure, scalable infrastructure and cybersecurity solutions
+            AWS Cloud & AI Engineer specializing in intelligent infrastructure, secure systems, and generative AI solutions
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="glow-hover bg-accent text-accent-foreground hover:bg-accent/90" onClick={() => document.getElementById('projects')?.scrollIntoView({
@@ -223,10 +223,10 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
-              AWS Cloud Projects
+              Cloud & AI Projects
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Building secure, scalable, and innovative solutions in the cloud
+              Building secure, scalable, and intelligent solutions powered by cloud infrastructure and generative AI
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -346,6 +346,40 @@ const Index = () => {
         </div>
       </section>
 
+      {/* AI Tools Section */}
+      <section className="py-20 px-6 relative z-10 bg-gradient-to-b from-background to-accent/5">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16 animate-on-scroll">
+            <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
+              AI Tools & Frameworks
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Leveraging cutting-edge generative AI platforms and tools to build intelligent solutions
+            </p>
+          </div>
+          <div className="grid md:grid-cols-5 gap-8">
+            {[
+              { name: "Google AI Studio", description: "Gemini API integration for AI-powered features" },
+              { name: "Claude Code", description: "AI-assisted development and code generation" },
+              { name: "Stitch", description: "Data pipeline and integration framework" },
+              { name: "Gemini", description: "Advanced language model for recommendations and analysis" },
+              { name: "AWS Bedrock", description: "Managed generative AI service on AWS" }
+            ].map((tool, index) => (
+              <div key={index} className="animate-on-scroll">
+                <div className="p-6 rounded-lg border border-accent/20 bg-card hover:border-accent/50 hover:bg-card/50 transition-all duration-300 h-full flex flex-col justify-center text-center group">
+                  <h3 className="font-heading font-semibold text-lg mb-2 group-hover:text-accent transition-colors">
+                    {tool.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {tool.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="about" className="py-20 px-6 relative z-10">
         <div className="container mx-auto max-w-4xl">
@@ -355,14 +389,15 @@ const Index = () => {
                 About Me
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                I'm a dedicated AWS cloud professional with a strong background in cybersecurity,
-                technical support, and systems architecture. My passion lies in building secure,
-                scalable cloud solutions that drive business success.
+                I'm a dedicated AWS Cloud & AI Engineer with a strong background in cybersecurity,
+                technical support, and intelligent systems architecture. My passion lies in building
+                secure, scalable cloud solutions enhanced with generative AI to drive business success.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                With expertise in AWS services, compliance frameworks, and customer-focused support,
-                I bring both technical depth and business acumen to every project. I thrive in
-                collaborative environments where innovation meets reliability.
+                With expertise in AWS services, generative AI integration, compliance frameworks, and
+                customer-focused support, I bring both technical depth and strategic thinking to every
+                project. I thrive in collaborative environments where innovation meets reliability,
+                leveraging AI tools to accelerate development and solve complex problems.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="secondary" className="bg-space-dark text-accent border-accent/20">AWS Cloud Practitioner</Badge>
