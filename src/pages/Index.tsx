@@ -360,11 +360,11 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-5 gap-8">
             {[
-              { name: "Google AI Studio", description: "Gemini API integration for AI-powered features", logo: "/logos/googleaistudio.svg" },
-              { name: "Claude Code", description: "AI-assisted development and code generation", logo: "/logos/claude.svg" },
-              { name: "OpenRouter", description: "Unified API for integrating multiple LLMs into applications", logo: "/logos/openrouter.svg" },
-              { name: "Gemini", description: "Advanced language model for recommendations and analysis", logo: "/logos/gemini.svg" },
-              { name: "AWS Bedrock", description: "Managed generative AI service on AWS", logo: "/logos/bedrock.svg" }
+              { name: "Google AI Studio", description: "Gemini API integration for AI-powered features", logo: "/logos/googleaistudio.png" },
+              { name: "Claude Code", description: "AI-assisted development and code generation", logo: "/logos/claude.png" },
+              { name: "OpenRouter", description: "Unified API for integrating multiple LLMs into applications", logo: "/logos/openrouter.png" },
+              { name: "Gemini", description: "Advanced language model for recommendations and analysis", logo: "/logos/gemini.png" },
+              { name: "AWS Bedrock", description: "Managed generative AI service on AWS", logo: "/logos/bedrock.png" }
             ].map((tool, index) => (
               <div key={index} className="animate-on-scroll">
                 <AIToolCard
