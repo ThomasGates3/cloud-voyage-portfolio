@@ -1,10 +1,10 @@
-# Cloud & AI Voyage Portfolio
+# Thomas Gates III Cloud/AI Portfolio
 
 A modern, space-themed portfolio website built with React, TypeScript, and Tailwind CSS. Showcase your AWS cloud and generative AI expertise, projects, and skills with an interactive, responsive design.
 
 ## Project Overview
 
-**Cloud & AI Voyage Portfolio** is a professional portfolio website for cloud engineers and AI engineers who leverage generative AI and AWS cloud services. It features a modern design with smooth animations, responsive layout, and direct contact links to social profiles.
+**Thomas Gates III Cloud/AI Portfolio** is a professional portfolio website for cloud engineers and AI engineers who leverage generative AI and AWS cloud services. It features a modern design with smooth animations, responsive layout, and direct contact links to social profiles.
 
 ### Key Features
 
@@ -128,7 +128,7 @@ npm run lint         # Run ESLint
 Eye-catching introduction with your name, tagline, and call-to-action buttons to view work or get in touch.
 
 ### Projects Section
-Showcase up to 4 AWS cloud projects with:
+Showcase up to 4 AI/Cloud projects with:
 - Project title and description
 - Technologies used (AWS services, frameworks, tools)
 - GitHub and live project links
