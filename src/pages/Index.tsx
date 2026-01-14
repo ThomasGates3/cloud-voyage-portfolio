@@ -29,6 +29,11 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
   const projects = [{
+    title: "GTV2 - AI Voice Receptionist for Lead Qualification & Booking",
+    description: "SaaS platform featuring an AI voice receptionist that answers calls 24/7, qualifies leads automatically, and books appointments. ElevenLabs ConvAI powers natural conversations that customers don't realize are AI. Pre-qualification modal captures business intent before scheduling demos. Comprehensive intake form with smart email routing (client confirmation + internal notifications via Resend), Calendly integration, and ROI calculator showing savings potential. Full backend with Supabase database tracking submission status and creating seamless lead pipelines.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ElevenLabs ConvAI", "Calendly API", "Supabase", "Resend", "Vercel"],
+    githubUrl: "https://github.com/ThomasGates3/GTV2"
+  }, {
     title: "IAM Policy Generator - AI-Powered AWS Policy Creation",
     description: "Serverless application leveraging Claude 3.5 Haiku to automate least-privilege IAM role management. Generates production-ready AWS IAM policies from plain English descriptions, eliminating manual role creation and policy design. Features real-time generation with AWS Lambda, responsive React frontend, and API Gateway integration for instant policy suggestions.",
     technologies: ["ReactJS", "Tailwind CSS", "Claude", "Generative AI", "AWS Lambda", "AWS S3", "AWS IAM", "API Gateway"],
