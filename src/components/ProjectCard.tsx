@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 interface ProjectCardProps {
   title: string;
@@ -14,7 +15,16 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, description, technologies, githubUrl, liveUrl, image }: ProjectCardProps) => {
   return (
-    <Card className="group glow-hover bg-card/50 backdrop-blur-sm border-border hover:border-accent transition-all duration-300">
+    <div className="relative group">
+      <GlowingEffect
+        spread={40}
+        glow={true}
+        disabled={false}
+        proximity={64}
+        inactiveZone={0.01}
+        borderWidth={2}
+      />
+      <Card className="group relative bg-card/50 backdrop-blur-sm border-border hover:border-accent/50 transition-all duration-300">
       {image && (
         <div className="aspect-video overflow-hidden rounded-t-lg">
           <img 
@@ -108,6 +118,7 @@ const ProjectCard = ({ title, description, technologies, githubUrl, liveUrl, ima
         </div>
       </CardContent>
     </Card>
+    </div>
   );
 };
 
