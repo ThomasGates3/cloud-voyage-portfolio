@@ -10,6 +10,7 @@ import PokemonHPBar from "@/components/PokemonHPBar";
 import CertificationCard from "@/components/CertificationCard";
 import CursorGlow from "@/components/CursorGlow";
 import { AIToolCard } from "@/components/AIToolCard";
+import { Timeline } from "@/components/ui/timeline";
 import spaceHero from "@/assets/space-hero.jpg";
 const Index = () => {
   useEffect(() => {
@@ -241,12 +242,21 @@ const Index = () => {
 
       {/* Resume Section */}
       <section id="resume" className="py-20 px-6 relative z-10">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-on-scroll">
-              <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16 animate-on-scroll">
+            <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
+              Professional Experience
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              A journey through cloud engineering, security, and AI innovation
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div className="animate-on-scroll sticky top-20">
+              <h3 className="font-heading font-bold text-2xl md:text-3xl mb-6">
                 Download Resume
-              </h2>
+              </h3>
               <p className="text-lg text-muted-foreground mb-8">
                 Access my complete resume to learn more about my professional experience,
                 certifications, technical achievements, and qualifications.
@@ -262,22 +272,27 @@ const Index = () => {
             </div>
 
             <div className="animate-on-scroll">
-              <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8">
-                Experience Timeline
-              </h2>
-              <div className="space-y-6">
-                {experience.map((job, index) => (
-                  <div key={index} className="relative pl-6 border-l-2 border-accent pb-6">
-                    <div className="absolute w-3 h-3 bg-accent rounded-full -left-[7px] top-1 mt-1" />
+              <Timeline
+                data={experience.map((job) => ({
+                  title: job.period,
+                  content: (
                     <div>
-                      <h3 className="font-heading font-semibold text-lg">{job.role}</h3>
-                      <p className="text-sm text-accent font-medium">{job.company}</p>
-                      <p className="text-xs text-muted-foreground mb-2">{job.period}</p>
-                      <p className="text-sm text-muted-foreground">{job.description}</p>
+                      <h3 className="font-heading font-semibold text-lg text-foreground">{job.role}</h3>
+                      <p className="text-sm text-accent font-medium mb-2">{job.company}</p>
+                      <p className="text-sm text-muted-foreground mb-4">{job.duration}</p>
+                      <p className="text-sm text-muted-foreground mb-4">{job.description}</p>
+                      <ul className="space-y-2">
+                        {job.highlights.map((highlight, idx) => (
+                          <li key={idx} className="text-xs text-muted-foreground flex gap-2">
+                            <span className="text-accent min-w-fit">▸</span>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  )
+                }))}
+              />
             </div>
           </div>
         </div>
