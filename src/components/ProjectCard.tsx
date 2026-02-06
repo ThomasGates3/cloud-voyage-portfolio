@@ -15,7 +15,7 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, description, technologies, githubUrl, liveUrl, image }: ProjectCardProps) => {
   return (
-    <div className="relative group">
+    <div className="relative group rounded-lg">
       <GlowingEffect
         spread={40}
         glow={true}
@@ -23,6 +23,7 @@ const ProjectCard = ({ title, description, technologies, githubUrl, liveUrl, ima
         proximity={64}
         inactiveZone={0.01}
         borderWidth={2}
+        className="rounded-lg"
       />
       <Card className="group relative bg-card/50 backdrop-blur-sm border-border hover:border-accent/50 transition-all duration-300">
       {image && (
