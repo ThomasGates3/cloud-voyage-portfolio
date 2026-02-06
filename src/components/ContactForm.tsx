@@ -25,7 +25,7 @@ const ContactForm = () => {
       icon: Github,
       label: "GitHub",
       value: "View Projects",
-      href: "#",
+      href: "https://github.com/ThomasGates3",
     },
   ];
 
