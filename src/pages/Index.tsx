@@ -154,12 +154,14 @@ const Index = () => {
       company: "Universal Technical Services",
       period: "Jan 2021 – Present",
       duration: "4+ years",
-      description: "Designed and reviewed secure cloud infrastructure across AWS environments. Implemented 50+ security controls reducing critical vulnerabilities by 30%. Developed Python and Bash automation scripts for security policy enforcement.",
+      description: "Designed and reviewed secure cloud infrastructure across AWS environments. Implemented 50+ security controls reducing critical vulnerabilities by 30%. Developed Python and Bash automation scripts for security policy enforcement and compliance monitoring.",
       highlights: [
-        "Designed and reviewed secure cloud infrastructure across AWS environments, ensuring compliance with NIST, FISMA, FedRAMP, and security best practices",
-        "Implemented 50+ security controls and hardening initiatives reducing critical vulnerabilities by 30% and improving cloud security posture",
-        "Developed Python and Bash automation scripts to enforce security policies, streamline deployments, and reduce configuration errors by 22%",
-        "Conducted comprehensive security audits and vulnerability assessments across cloud platforms"
+        "Designed and reviewed secure cloud infrastructure across AWS environments, ensuring compliance with NIST SP 800-53, NIST CSF, SOC 2, ISO 27001, and HIPAA Security Rule requirements",
+        "Implemented 50+ security controls and hardening initiatives reducing critical vulnerabilities by 30%, including IAM least-privilege policies, encryption at rest/in transit, and zero-trust network segmentation",
+        "Conducted risk assessments and gap analyses for healthcare-adjacent and regulated environments, ensuring ePHI safeguards and Business Associate Agreement (BAA) compliance across cloud services",
+        "Developed Python and Bash automation scripts to enforce security policies, streamline Infrastructure-as-Code deployments with Terraform, and reduce configuration drift by 22%",
+        "Monitored SIEM platforms (Splunk) and threat intelligence feeds, investigating alerts, performing root cause analysis, and building security dashboards for executive compliance reporting",
+        "Supported internal and external audits including evidence collection across 40+ enterprise systems, maintaining documentation aligned with GRC frameworks and regulatory standards"
       ]
     },
     {
@@ -167,12 +169,12 @@ const Index = () => {
       company: "Spectrum",
       period: "March 2023 – May 2024",
       duration: "~1.5 years",
-      description: "Managed cloud infrastructure monitoring and security incident response for 40+ systems, reducing incidents by 35%. Performed network and endpoint hardening across cloud infrastructure.",
+      description: "Managed cloud infrastructure monitoring and security incident response for 40+ systems, reducing incidents by 35%. Performed network and endpoint hardening across cloud and hybrid environments.",
       highlights: [
-        "Managed cloud infrastructure monitoring and security incident response for 40+ systems, reducing incidents by 35% through hardening controls",
-        "Performed network and endpoint hardening across cloud infrastructure, implementing security protocols that mitigated unauthorized access",
-        "Conducted vulnerability assessments and security scanning to identify cloud infrastructure risks",
-        "Supported business continuity through infrastructure monitoring and security controls, maintaining 99.2% uptime"
+        "Managed cloud infrastructure monitoring and security incident response for 40+ systems, reducing incidents by 35% through endpoint hardening and automated detection rules",
+        "Performed network and endpoint hardening across cloud and hybrid infrastructure, implementing zero-trust security protocols that mitigated unauthorized access attempts",
+        "Developed automation scripts using Python for log aggregation, security monitoring workflows, and CI/CD pipeline security checks, improving incident response efficiency by 28%",
+        "Supported business continuity through proactive infrastructure monitoring, vulnerability scanning, and security controls, maintaining 99.2% system uptime"
       ]
     },
     {
@@ -180,9 +182,9 @@ const Index = () => {
       company: "East Carolina University",
       period: "2016 – 2020",
       duration: "4 years",
-      description: "Strong foundation in computer science fundamentals, networking, and security principles.",
+      description: "Strong foundation in computer science fundamentals, networking, security principles, and software development.",
       highlights: [
-        "Computer Science degree with focus on systems and security"
+        "Computer Science degree with coursework in systems architecture, network security, and software engineering"
       ]
     }
   ];
