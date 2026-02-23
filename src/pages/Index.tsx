@@ -39,8 +39,7 @@ const Index = () => {
     title: "IAM Policy Generator - AI-Powered AWS Policy Creation",
     description: "Serverless application leveraging Claude 3.5 Haiku to automate least-privilege IAM role management. Generates production-ready AWS IAM policies from plain English descriptions, eliminating manual role creation and policy design. Features real-time generation with AWS Lambda, responsive React frontend, and API Gateway integration for instant policy suggestions.",
     technologies: ["ReactJS", "Tailwind CSS", "Claude", "Generative AI", "AWS Lambda", "AWS S3", "AWS IAM", "API Gateway"],
-    githubUrl: "https://github.com/ThomasGates3/ai-powered-iam",
-    liveUrl: "http://iam-policy-gen-website-049475639513-prod.s3-website-us-east-1.amazonaws.com/"
+    githubUrl: "https://github.com/ThomasGates3/ai-powered-iam"
   }, {
     title: "Remedy AI - AI-Powered Wellness Discovery",
     description: "Intelligent platform for discovering and evaluating natural health remedies. Features AI-powered symptom-based recommendations, structured remedy information with preparation guides and safety precautions, side-by-side comparisons, search history tracking, and favorites system. Built with React 19, TypeScript, and Tailwind CSS with Cloud Run deployment on Google Cloud.",
