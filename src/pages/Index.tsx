@@ -37,10 +37,10 @@ const Index = () => {
     liveUrl: "https://gates-tech.vercel.app/"
   }, {
     title: "IAM Policy Generator - AI-Powered AWS & GCP Policies",
-    description: "Serverless application leveraging Claude 3.5 Haiku via OpenRouter to automate least-privilege IAM role management for AWS and GCP. Generates production-ready IAM policies from plain English descriptions, eliminating manual policy design. Features real-time generation, cloud provider selector, policy history, and responsive React frontend deployed on Google Cloud Run.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "OpenRouter API", "Claude 3.5", "Google Cloud Run", "Vercel Functions"],
+    description: "Serverless application leveraging Claude 3.5 Haiku via OpenRouter to automate least-privilege IAM role management for AWS and GCP. Generates production-ready IAM policies from plain English descriptions, eliminating manual policy design. Features real-time generation, cloud provider selector, policy history, and responsive React frontend deployed on Vercel with in-memory policy storage.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "OpenRouter API", "Claude 3.5", "Node.js", "Vercel Deployment"],
     githubUrl: "https://github.com/ThomasGates3/ai-powered-policy-generator",
-    liveUrl: "https://iam-policy-generator-demo.run.app/"
+    liveUrl: "https://ai-powered-iam.vercel.app/"
   }, {
     title: "Remedy AI - AI-Powered Wellness Discovery",
     description: "Intelligent platform for discovering and evaluating natural health remedies. Features AI-powered symptom-based recommendations, structured remedy information with preparation guides and safety precautions, side-by-side comparisons, search history tracking, and favorites system. Built with React 19, TypeScript, and Tailwind CSS with Cloud Run deployment on Google Cloud.",
